@@ -5,25 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EQLBM.CLUB — Скоро запуск</title>
 <meta name="description" content="Equilibrium Club — покерное комьюнити нового уровня. Скоро запуск.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,2 93,26 93,74 50,98 7,74 7,26' fill='%230a0906' stroke='%238b5cf6' stroke-width='4'/%3E%3Ctext x='50' y='67' font-family='Georgia,serif' font-size='52' font-weight='300' fill='%238b5cf6' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a84c;--bg:#0a0906;--text:#f0ead8;--muted:rgba(240,234,216,0.45);--border:rgba(201,168,76,0.28)}
+:root{--gold:#8b5cf6;--bg:#0a0906;--text:#f0ead8;--muted:rgba(240,234,216,0.45);--border:rgba(139,92,246,0.25)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow-x:hidden}
-.bg-glow{position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 45%,rgba(201,168,76,0.07),transparent 70%);pointer-events:none}
-.s1{position:fixed;top:6%;left:6%;font-size:9rem;color:rgba(201,168,76,0.04);font-family:serif;user-select:none;animation:f1 12s ease-in-out infinite}
-.s2{position:fixed;bottom:6%;right:6%;font-size:6rem;color:rgba(201,168,76,0.04);font-family:serif;user-select:none;animation:f2 15s ease-in-out infinite}
+.bg-glow{position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 45%,rgba(139,92,246,0.07),transparent 70%);pointer-events:none}
+.s1{position:fixed;top:6%;left:6%;font-size:9rem;color:rgba(139,92,246,0.04);font-family:serif;user-select:none;animation:f1 12s ease-in-out infinite}
+.s2{position:fixed;bottom:6%;right:6%;font-size:6rem;color:rgba(139,92,246,0.04);font-family:serif;user-select:none;animation:f2 15s ease-in-out infinite}
 @keyframes f1{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(5deg) translateY(-15px)}}
 @keyframes f2{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-5deg) translateY(12px)}}
 .wrap{position:relative;z-index:1;max-width:500px;width:100%;margin:0 auto;padding-bottom:1rem}
-.eyebrow{font-size:.6rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;opacity:1}
-.logo{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,4.5rem);font-weight:300;letter-spacing:.12em;line-height:1}
+.eyebrow{font-size:.6rem;letter-spacing:.35em;color:#a78bfa;text-transform:uppercase;margin-bottom:1rem;opacity:1}
+.logo{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,4.5rem);font-weight:300;letter-spacing:.12em;line-height:1;color:#8b5cf6}
 .logo-domain{font-family:'Cormorant Garamond',serif;font-size:clamp(.85rem,2vw,1.2rem);font-weight:300;letter-spacing:.3em;color:var(--gold);opacity:.65;margin-top:.1rem;margin-bottom:1.2rem}
 .divider{width:1px;height:28px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto 1.2rem}
 
 /* SUITS */
 .suits-loader{display:flex;gap:1.2rem;justify-content:center;align-items:center;margin-bottom:1rem}
-.suit-item{font-size:1.3rem;color:rgba(201,168,76,0.1);transition:color .35s,text-shadow .35s;font-family:serif}
+.suit-item{font-size:1.3rem;color:rgba(139,92,246,0.1);transition:color .35s,text-shadow .35s;font-family:serif}
 .suit-item[data-i="0"].active{color:#c8c8c8;text-shadow:0 0 16px rgba(200,200,200,0.65)}
 .suit-item[data-i="1"].active{color:#e05c5c;text-shadow:0 0 16px rgba(224,92,92,0.65)}
 .suit-item[data-i="2"].active{color:#4a90d9;text-shadow:0 0 16px rgba(74,144,217,0.65)}
@@ -32,12 +33,12 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
 /* PROGRESS */
 .progress-wrap{margin-bottom:1rem}
 .progress-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
-.progress-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,234,216,0.3)}
+.progress-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#a78bfa}
 .equity-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold);line-height:1}
-.equity-sub{font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,168,76,0.5)}
-.progress-track{height:2px;background:rgba(201,168,76,0.1);position:relative;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(to right,rgba(201,168,76,0.4),var(--gold));transition:width 1s ease;width:0%}
-.progress-date{font-size:.6rem;color:rgba(240,234,216,0.18);margin-top:.3rem;letter-spacing:.05em}
+.equity-sub{font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(139,92,246,0.5)}
+.progress-track{height:2px;background:rgba(139,92,246,0.1);position:relative;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(to right,rgba(139,92,246,0.4),var(--gold));transition:width 1s ease;width:0%}
+.progress-date{font-size:.6rem;color:rgba(240,234,216,0.85);margin-top:.3rem;letter-spacing:.05em}
 
 /* ROTATING TEXT */
 .rotating-msg{min-height:2rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
@@ -45,12 +46,12 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
 .rotating-msg p.visible{opacity:1;position:relative}
 
 /* EARLY ACCESS BLOCK */
-.early-box{border:1px solid rgba(201,168,76,0.2);padding:.9rem 1.2rem;margin-bottom:1rem;background:rgba(201,168,76,0.03);text-align:left}
-.early-title{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;opacity:.8}
+.early-box{border:1px solid rgba(139,92,246,0.2);padding:.9rem 1.2rem;margin-bottom:1rem;background:rgba(139,92,246,0.03);text-align:left}
+.early-title{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#a78bfa;margin-bottom:.6rem;opacity:1}
 .early-perks{list-style:none}
 .early-perks li{font-size:.75rem;color:var(--muted);padding:.25rem 0;display:flex;gap:.6rem;line-height:1.4;align-items:flex-start}
 .early-perks li .perk-green{margin-left:auto;padding-left:1rem;flex-shrink:0;white-space:nowrap;align-self:center}
-.early-perks li::before{content:'—';color:rgba(201,168,76,0.4);flex-shrink:0}
+.early-perks li::before{content:'—';color:rgba(139,92,246,0.4);flex-shrink:0}
 
 /* FORM */
 .form-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.75rem;display:block}
@@ -72,14 +73,14 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
 .success-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold);margin-bottom:1.2rem;line-height:1.2}
 .success-text{font-size:.8rem;color:var(--muted);line-height:1.9;margin-bottom:2rem}
 .back-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);padding:.75rem 2rem;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--text);background:transparent;cursor:pointer;transition:border-color .2s,background .2s}
-.back-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.04)}
+.back-btn:hover{border-color:var(--gold);background:rgba(139,92,246,0.04)}
 .perk-green{color:#5bbf7a;font-weight:500}.perk-dim{color:var(--gold);font-weight:300;opacity:.6}
 .hint{font-size:.63rem;color:rgba(240,234,216,0.18);margin-top:.6rem;letter-spacing:.04em;line-height:1.6}
 
 /* SOCIAL */
 .or-sep{display:flex;align-items:center;gap:1rem;margin:1.3rem 0;color:rgba(240,234,216,0.18);font-size:.68rem;letter-spacing:.1em}
-.or-sep::before,.or-sep::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.1)}
-.follow-label{font-size:.6rem;letter-spacing:.2em;color:rgba(240,234,216,0.22);text-transform:uppercase;margin-bottom:.5rem}
+.or-sep::before,.or-sep::after{content:'';flex:1;height:1px;background:rgba(139,92,246,0.35)}
+.follow-label{font-size:.6rem;letter-spacing:.2em;color:#a78bfa;text-transform:uppercase;margin-bottom:.5rem}
 .social-row{display:flex;gap:10px}
 .social-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border:1px solid var(--border);padding:.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer}
 .fold-btn{color:#e05c5c;border-color:rgba(224,92,92,0.35);transition:border-color .2s,background .2s,box-shadow .2s,color .2s}
@@ -87,8 +88,8 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
 .raise-btn{color:#5bbf7a;border-color:rgba(91,191,122,0.35);transition:border-color .2s,background .2s,box-shadow .2s,color .2s}
 .raise-btn:hover{color:#7ddc9a;border-color:rgba(91,191,122,0.9);background:rgba(91,191,122,0.12);box-shadow:0 0 20px rgba(91,191,122,0.35),inset 0 0 12px rgba(91,191,122,0.08)}
 
-.tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border:1px solid var(--border);padding:.65rem 2rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text);text-decoration:none;background:transparent;transition:border-color .2s,background .2s;width:100%;cursor:pointer;margin-top:.6rem}
-.tg-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.04)}
+.tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border:1px solid rgba(139,92,246,0.4);padding:.65rem 2rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text);text-decoration:none;background:transparent;transition:border-color .2s,background .2s;width:100%;cursor:pointer;margin-top:.6rem}
+.tg-btn:hover{border-color:rgba(139,92,246,0.3);background:rgba(139,92,246,0.04)}
 
 
   .wrap{max-width:460px}
@@ -162,7 +163,7 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
       </div>
     </div>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
-    <div class="progress-date">Запуск — 9 сентября 2026</div>
+    <div class="progress-date">Запуск — <span style="color:#e05c5c">9</span> сентября 2026</div>
   </div>
 
   <!-- ROTATING MESSAGE -->
@@ -179,7 +180,7 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
     </ul>
   </div>
 
-  <p class="form-label" style="margin-top:1rem;margin-bottom:.7rem;opacity:.55">Зафиксируй своё участие через бота в Telegram</p>
+  <p class="form-label" style="margin-top:1rem;margin-bottom:.7rem;opacity:1;color:#f0ead8">Зафиксируй своё участие через бота в Telegram</p>
   <a class="bot-btn" href="https://t.me/EQLBMBOT?start=early" target="_blank" id="bot-link">
     <span class="bot-btn-left">I'M IN</span>
     <span class="bot-btn-divider"></span>
@@ -211,7 +212,7 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
     </a>
   </div>
 
-  <a class="tg-btn" href="https://t.me/leonishe" target="_blank">
+  <a class="tg-btn" style="color:#8b5cf6" href="https://t.me/leonishe" target="_blank">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 5L2 12.5l7 1M21 5l-2.5 15L9 13.5M21 5L9 13.5m0 0v5l3.5-3"/></svg>
     Поговорить с фаундером
   </a>
