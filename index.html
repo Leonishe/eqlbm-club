@@ -38,20 +38,20 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
 .equity-sub{font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(139,92,246,0.5)}
 .progress-track{height:2px;background:rgba(139,92,246,0.1);position:relative;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(to right,rgba(139,92,246,0.4),var(--gold));transition:width 1s ease;width:0%}
-.progress-date{font-size:.6rem;color:rgba(240,234,216,0.85);margin-top:.3rem;letter-spacing:.05em}
+.progress-date{font-size:.6rem;color:#a78bfa;margin-top:.3rem;letter-spacing:.05em}
 
 /* ROTATING TEXT */
 .rotating-msg{min-height:2rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.rotating-msg p{font-size:.82rem;color:var(--muted);line-height:1.8;opacity:0;transition:opacity .5s;position:absolute}
+.rotating-msg p{font-size:.82rem;color:#a78bfa;line-height:1.8;opacity:0;transition:opacity .5s;position:absolute}
 .rotating-msg p.visible{opacity:1;position:relative}
 
 /* EARLY ACCESS BLOCK */
 .early-box{border:1px solid rgba(139,92,246,0.2);padding:.9rem 1.2rem;margin-bottom:1rem;background:rgba(139,92,246,0.03);text-align:left}
 .early-title{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#a78bfa;margin-bottom:.6rem;opacity:1}
 .early-perks{list-style:none}
-.early-perks li{font-size:.75rem;color:var(--muted);padding:.25rem 0;display:flex;gap:.6rem;line-height:1.4;align-items:flex-start}
+.early-perks li{font-size:.75rem;color:#c4b5fd;padding:.25rem 0;display:flex;gap:.6rem;line-height:1.4;align-items:flex-start}
 .early-perks li .perk-green{margin-left:auto;padding-left:1rem;flex-shrink:0;white-space:nowrap;align-self:center}
-.early-perks li::before{content:'—';color:rgba(139,92,246,0.4);flex-shrink:0}
+.early-perks li::before{content:'';}
 
 /* FORM */
 .form-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.75rem;display:block}
@@ -142,7 +142,7 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
 <div class="s2">♦</div>
 
 <div class="wrap">
-  <p class="eyebrow">Покерное комьюнити</p>
+  <p class="eyebrow">Закрытое покерное комьюнити</p>
   <div class="logo">EQLBM</div>
   <div class="logo-domain">.CLUB</div>
   <div class="divider"></div>
@@ -175,12 +175,12 @@ body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;
   <div class="early-box">
     <div class="early-title">Early Bird Registration</div>
     <ul class="early-perks">
-      <li>Условия, которых не получит никто после старта проекта. <span style="white-space:nowrap"><span class="perk-green">+10% к стэку</span></span></li>
-      <li>Роль OG в Discord с постоянными преимуществами <span style="white-space:nowrap"><span class="perk-green">+5bb/100</span></span></li>
+      <li><span style="color:#a78bfa;margin-right:.6rem">—</span>Условия, которых не получит никто после старта проекта. <span style="white-space:nowrap"><span class="perk-green">+10% к стэку</span></span></li>
+      <li><span style="color:#a78bfa;margin-right:.6rem">—</span>Роль OG в Discord с постоянными преимуществами <span style="white-space:nowrap"><span class="perk-green">+5bb/100</span></span></li>
     </ul>
   </div>
 
-  <p class="form-label" style="margin-top:1rem;margin-bottom:.7rem;opacity:1;color:#f0ead8">Зафиксируй своё участие через бота в Telegram</p>
+  <p class="form-label" style="margin-top:1rem;margin-bottom:.7rem;opacity:1;color:#a78bfa">Зафиксируй своё участие через бота в Telegram</p>
   <a class="bot-btn" href="https://t.me/EQLBMBOT?start=early" target="_blank" id="bot-link">
     <span class="bot-btn-left">I'M IN</span>
     <span class="bot-btn-divider"></span>
