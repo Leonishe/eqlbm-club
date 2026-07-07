@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EQLBM.CLUB — Скоро запуск</title>
+<meta name="description" content="Equilibrium Club — покерное комьюнити нового уровня. Скоро запуск.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--bg:#0a0906;--text:#f0ead8;--muted:rgba(240,234,216,0.45);--border:rgba(201,168,76,0.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem 2rem 3rem;position:relative;overflow:hidden}
+.bg-glow{position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 45%,rgba(201,168,76,0.07),transparent 70%);pointer-events:none}
+.s1{position:fixed;top:6%;left:6%;font-size:9rem;color:rgba(201,168,76,0.04);font-family:serif;user-select:none;animation:f1 12s ease-in-out infinite}
+.s2{position:fixed;bottom:6%;right:6%;font-size:6rem;color:rgba(201,168,76,0.04);font-family:serif;user-select:none;animation:f2 15s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(5deg) translateY(-15px)}}
+@keyframes f2{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-5deg) translateY(12px)}}
+.wrap{position:relative;z-index:1;max-width:500px;width:100%}
+.eyebrow{font-size:.6rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:.7}
+.logo{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,12vw,5.8rem);font-weight:300;letter-spacing:.12em;line-height:1}
+.logo-domain{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,3vw,1.5rem);font-weight:300;letter-spacing:.3em;color:var(--gold);opacity:.65;margin-top:.2rem;margin-bottom:2rem}
+.divider{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto 2rem}
+
+/* SUITS */
+.suits-loader{display:flex;gap:1.6rem;justify-content:center;align-items:center;margin-bottom:1.6rem}
+.suit-item{font-size:1.7rem;color:rgba(201,168,76,0.1);transition:color .35s,text-shadow .35s;font-family:serif}
+.suit-item[data-i="0"].active{color:#c8c8c8;text-shadow:0 0 16px rgba(200,200,200,0.65)}
+.suit-item[data-i="1"].active{color:#e05c5c;text-shadow:0 0 16px rgba(224,92,92,0.65)}
+.suit-item[data-i="2"].active{color:#4a90d9;text-shadow:0 0 16px rgba(74,144,217,0.65)}
+.suit-item[data-i="3"].active{color:#5bbf7a;text-shadow:0 0 16px rgba(91,191,122,0.65)}
+
+/* PROGRESS */
+.progress-wrap{margin-bottom:2rem}
+.progress-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+.progress-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,234,216,0.3)}
+.equity-val{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold);line-height:1}
+.equity-sub{font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,168,76,0.5)}
+.progress-track{height:2px;background:rgba(201,168,76,0.1);position:relative;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(to right,rgba(201,168,76,0.4),var(--gold));transition:width 1s ease;width:0%}
+.progress-date{font-size:.6rem;color:rgba(240,234,216,0.18);margin-top:.5rem;letter-spacing:.05em}
+
+/* ROTATING TEXT */
+.rotating-msg{min-height:2.8rem;display:flex;align-items:center;justify-content:center;margin-bottom:2rem}
+.rotating-msg p{font-size:.82rem;color:var(--muted);line-height:1.8;opacity:0;transition:opacity .5s;position:absolute}
+.rotating-msg p.visible{opacity:1;position:relative}
+
+/* EARLY ACCESS BLOCK */
+.early-box{border:1px solid rgba(201,168,76,0.2);padding:1.4rem 1.5rem;margin-bottom:2rem;background:rgba(201,168,76,0.03);text-align:left}
+.early-title{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;opacity:.8}
+.early-perks{list-style:none}
+.early-perks li{font-size:.78rem;color:var(--muted);padding:.4rem 0;display:flex;gap:.6rem;line-height:1.5;align-items:flex-start}
+.early-perks li .perk-green{margin-left:auto;padding-left:1rem;flex-shrink:0;white-space:nowrap;align-self:center}
+.early-perks li::before{content:'—';color:rgba(201,168,76,0.4);flex-shrink:0}
+
+/* FORM */
+.form-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.75rem;display:block}
+@keyframes ev-glow{0%,100%{box-shadow:0 0 8px rgba(91,191,122,0.3),0 0 20px rgba(91,191,122,0.1)}50%{box-shadow:0 0 20px rgba(91,191,122,0.6),0 0 40px rgba(91,191,122,0.25)}}
+.bot-btn{display:flex;align-items:center;gap:1rem;border:1px solid rgba(91,191,122,0.4);padding:1.1rem 1.4rem;background:rgba(91,191,122,0.04);text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s;animation:ev-glow 2.5s ease-in-out infinite;position:relative;overflow:hidden}
+.bot-btn:hover{background:rgba(91,191,122,0.08);border-color:rgba(91,191,122,0.7)}
+.bot-btn-left{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:#5bbf7a;letter-spacing:.12em;flex-shrink:0}
+.bot-btn-divider{width:1px;height:1.4rem;background:rgba(91,191,122,0.25);flex-shrink:0}
+.bot-btn-right{flex:1;font-size:.75rem;font-weight:500;letter-spacing:.2em;color:var(--text);text-transform:uppercase;text-align:center;transition:opacity .3s,color .3s}
+.bot-btn svg{color:rgba(91,191,122,0.6);flex-shrink:0}
+.submit-btn{background:var(--gold);color:#0a0906;border:none;padding:0 1.4rem;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;white-space:nowrap;flex-shrink:0}
+.submit-btn{display:none}
+@keyframes ev-pulse{0%,100%{box-shadow:0 0 8px rgba(91,191,122,0.4),0 0 20px rgba(91,191,122,0.15);opacity:1}50%{box-shadow:0 0 16px rgba(91,191,122,0.7),0 0 40px rgba(91,191,122,0.3);opacity:.85}}
+.submit-btn-ev{background:transparent;color:#5bbf7a;border:1px solid rgba(91,191,122,0.6);padding:0 1.8rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;letter-spacing:.2em;cursor:pointer;flex-shrink:0;animation:ev-pulse 2s ease-in-out infinite;transition:background .2s}
+.submit-btn-ev:hover{background:rgba(91,191,122,0.08)}
+.success{display:none}
+.success-screen{display:none;text-align:center;padding:1rem 0}
+.success-icon{font-size:2rem;margin-bottom:1.2rem;font-family:serif;color:var(--gold)}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold);margin-bottom:1.2rem;line-height:1.2}
+.success-text{font-size:.8rem;color:var(--muted);line-height:1.9;margin-bottom:2rem}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);padding:.75rem 2rem;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--text);background:transparent;cursor:pointer;transition:border-color .2s,background .2s}
+.back-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.04)}
+.perk-green{color:#5bbf7a;font-weight:500}.perk-dim{color:var(--gold);font-weight:300;opacity:.6}
+.hint{font-size:.63rem;color:rgba(240,234,216,0.18);margin-top:.6rem;letter-spacing:.04em;line-height:1.6}
+
+/* SOCIAL */
+.or-sep{display:flex;align-items:center;gap:1rem;margin:1.3rem 0;color:rgba(240,234,216,0.18);font-size:.68rem;letter-spacing:.1em}
+.or-sep::before,.or-sep::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.1)}
+.follow-label{font-size:.6rem;letter-spacing:.2em;color:rgba(240,234,216,0.22);text-transform:uppercase;margin-bottom:.7rem}
+.social-row{display:flex;gap:10px}
+.social-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border:1px solid var(--border);padding:.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer}
+.fold-btn{color:#e05c5c;border-color:rgba(224,92,92,0.35);transition:border-color .2s,background .2s,box-shadow .2s,color .2s}
+.fold-btn:hover{color:#ff7070;border-color:rgba(224,92,92,0.9);background:rgba(224,92,92,0.12);box-shadow:0 0 20px rgba(224,92,92,0.35),inset 0 0 12px rgba(224,92,92,0.08)}
+.raise-btn{color:#5bbf7a;border-color:rgba(91,191,122,0.35);transition:border-color .2s,background .2s,box-shadow .2s,color .2s}
+.raise-btn:hover{color:#7ddc9a;border-color:rgba(91,191,122,0.9);background:rgba(91,191,122,0.12);box-shadow:0 0 20px rgba(91,191,122,0.35),inset 0 0 12px rgba(91,191,122,0.08)}
+
+.tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border:1px solid var(--border);padding:.8rem 2rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text);text-decoration:none;background:transparent;transition:border-color .2s,background .2s;width:100%;cursor:pointer;margin-top:.6rem}
+.tg-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.04)}
+
+@media(max-width:600px){
+  body{padding:1.5rem 1.2rem 2.5rem}
+  .logo{font-size:clamp(2.8rem,16vw,4.5rem)}
+  .logo-domain{font-size:clamp(.9rem,4vw,1.3rem)}
+  .suits-loader{gap:1.2rem}
+  .suit-item{font-size:1.5rem}
+  .equity-val{font-size:1.3rem}
+  .early-box{padding:1.1rem 1.1rem}
+  .early-perks li{font-size:.75rem}
+  .input-row{flex-wrap:nowrap}
+  .tg-input{font-size:.8rem;padding:.75rem .7rem}
+  .tg-prefix{padding:0 .6rem;font-size:.85rem}
+  .submit-btn-ev{padding:0 1.1rem;font-size:1.2rem}
+  .social-row{flex-direction:column;gap:8px}
+  .social-btn{width:100%}
+  .tg-btn{padding:.75rem 1rem;font-size:.68rem}
+  .success-title{font-size:1.3rem}
+  .success-text{font-size:.75rem}
+  .back-btn{padding:.65rem 1.5rem;font-size:.65rem}
+  .rotating-msg p{font-size:.75rem}
+  .progress-wrap{margin-bottom:1.5rem}
+}
+@media(min-width:601px) and (max-width:900px){
+  body{padding:2rem 3rem 3rem}
+  .wrap{max-width:460px}
+  .logo{font-size:clamp(3rem,10vw,5rem)}
+  .suits-loader{gap:1.8rem}
+  .suit-item{font-size:2rem}
+  .social-row{gap:12px}
+  .input-row{flex-wrap:nowrap}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="s1">♠</div>
+<div class="s2">♦</div>
+
+<div class="wrap">
+  <p class="eyebrow">Покерное комьюнити</p>
+  <div class="logo">EQLBM</div>
+  <div class="logo-domain">.CLUB</div>
+  <div class="divider"></div>
+
+  <div class="suits-loader">
+    <span class="suit-item" data-i="0">♠</span>
+    <span class="suit-item" data-i="1">♥</span>
+    <span class="suit-item" data-i="2">♦</span>
+    <span class="suit-item" data-i="3">♣</span>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <span class="progress-label">Реализовано эквити до старта проекта</span>
+      <div>
+        <span class="equity-val" id="equity-num">0%</span>
+      </div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-date">Запуск — 9 сентября 2026</div>
+  </div>
+
+  <!-- ROTATING MESSAGE -->
+  <div class="rotating-msg" id="rotating-msg">
+    <p class="visible" id="rot-text">Идёт разработка платформы...</p>
+  </div>
+
+  <!-- EARLY ACCESS -->
+  <div class="early-box">
+    <div class="early-title">Early Bird Registration</div>
+    <ul class="early-perks">
+      <li>Условия, которых не получит никто после старта проекта. <span style="white-space:nowrap"><span class="perk-green">+10% к стэку</span></span></li>
+      <li>Роль OG в Discord с постоянными преимуществами <span style="white-space:nowrap"><span class="perk-green">+5bb/100</span></span></li>
+    </ul>
+  </div>
+
+  <p class="form-label" style="margin-top:1.8rem;margin-bottom:1.2rem;opacity:.55">Зафиксируй своё участие через бота в Telegram</p>
+  <a class="bot-btn" href="https://t.me/EQLBMBOT?start=early" target="_blank" id="bot-link">
+    <span class="bot-btn-left">I'M IN</span>
+    <span class="bot-btn-divider"></span>
+    <span class="bot-btn-right" id="reg-text">REGISTER</span>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 5L2 12.5l7 1M21 5l-2.5 15L9 13.5M21 5L9 13.5m0 0v5l3.5-3"/></svg>
+  </a>
+  <div class="success" id="success"></div>
+  
+
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">♠</div>
+    <div class="success-title">Заявка принята</div>
+    <p class="success-text">Вы получите уведомление в Telegram за несколько дней до официального старта проекта.<br><br>То, что вы получите — будет только у вас и всех ранних пользователей.</p>
+    <button class="back-btn" onclick="goBack()">← Вернуться</button>
+  </div>
+
+  <div id="social-block">
+  <div class="or-sep">ещё</div>
+
+  <p class="follow-label">Следи за запуском</p>
+  <div class="social-row">
+    <a class="social-btn fold-btn" href="https://instagram.com/eqlbm.club" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+      FOLD
+    </a>
+    <a class="social-btn raise-btn" href="https://t.me/eqlbmclub" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 5L2 12.5l7 1M21 5l-2.5 15L9 13.5M21 5L9 13.5m0 0v5l3.5-3"/></svg>
+      RAISE
+    </a>
+  </div>
+
+  <a class="tg-btn" href="https://t.me/leonishe" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 5L2 12.5l7 1M21 5l-2.5 15L9 13.5M21 5L9 13.5m0 0v5l3.5-3"/></svg>
+    Поговорить с фаундером
+  </a>
+  </div><!-- /social-block -->
+</div>
+
+<script>
+// SUITS
+var _si=0,_suits=document.querySelectorAll('.suit-item');
+function _animSuits(){
+  _suits.forEach(function(s){s.classList.remove('active')});
+  _suits[_si].classList.add('active');
+  _si=(_si+1)%4;
+}
+_animSuits();setInterval(_animSuits,600);
+
+// PROGRESS — от даты публикации до 31 августа 2025
+var START = new Date(Date.UTC(2026,5,9,0,0,0));
+var END   = new Date(Date.UTC(2026,8,9,23,59,59));
+function calcEquity(){
+  var now  = new Date();
+  var total = END - START;
+  var passed = now - START;
+  var pct = Math.min(100, Math.max(0, Math.round(passed / total * 100)));
+  return pct;
+}
+function updateProgress(){
+  var pct = calcEquity();
+  document.getElementById('equity-num').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+// animate from 0 to current on load
+window.addEventListener('load', function(){
+  var target = calcEquity();
+  var current = 0;
+  var step = target / 60;
+  var el = document.getElementById('progress-fill');
+  var numEl = document.getElementById('equity-num');
+  var timer = setInterval(function(){
+    current = Math.min(target, current + step);
+    el.style.width = current.toFixed(1) + '%';
+    numEl.textContent = Math.round(current) + '%';
+    if(current >= target) clearInterval(timer);
+  }, 20);
+});
+setInterval(updateProgress, 60000);
+
+// ROTATING MESSAGES
+var msgs = [
+  'Создаём роли в Discord...',
+  'Настраиваем сервер с HRC и GTOwizard...',
+  'Собираем команду профессионалов...',
+  'Готовим первые разборы финалок...',
+  'Финальное тестирование перед запуском...',
+  'Осталось совсем немного — будь первым.'
+];
+function getPhaseMsg(){
+  var pct = calcEquity();
+  if(pct < 20) return msgs[0];
+  if(pct < 40) return msgs[1];
+  if(pct < 60) return msgs[2];
+  if(pct < 75) return msgs[3];
+  if(pct < 90) return msgs[4];
+  return msgs[5];
+}
+var rotIdx = 0;
+var rotTexts = [getPhaseMsg()];
+// add a couple rotating variants
+for(var i=0;i<msgs.length;i++) if(msgs[i]!==rotTexts[0]) rotTexts.push(msgs[i]);
+function rotateMsg(){
+  var el = document.getElementById('rot-text');
+  el.style.opacity='0';
+  setTimeout(function(){
+    rotIdx=(rotIdx+1)%rotTexts.length;
+    el.textContent=rotTexts[rotIdx];
+    el.style.opacity='1';
+  },500);
+}
+setInterval(rotateMsg, 3200);
+
+// FORM
+
+</script>
+<script>
+var _rt = document.getElementById('reg-text');
+var _rtVals = ['REGISTER', '+EV'];
+var _rti = 0;
+setInterval(function(){
+  _rt.style.opacity = '0';
+  setTimeout(function(){
+    _rti = (_rti + 1) % 2;
+    _rt.textContent = _rtVals[_rti];
+    _rt.style.color = _rti === 1 ? '#5bbf7a' : 'var(--text)';
+    _rt.style.opacity = '1';
+  }, 300);
+}, 2500);
+</script>
+</body>
+</html>
