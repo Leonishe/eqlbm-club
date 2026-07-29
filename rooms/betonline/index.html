@@ -7,6 +7,7 @@
 <meta name="description" content="BetOnline. Покер работает разделом внутри платформы со ставками и казино — аккаунт один на всё.">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
 <link rel="apple-touch-icon" href="/assets/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EQLBM.CLUB">
@@ -31,15 +32,20 @@
   --amber:#d9a441;
   --rust:#b4644f;
   --sp:clamp(1.1rem,3.2vw,2.2rem);
+  --r:5px;
+  --r-lg:9px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   background:var(--ink);color:var(--cream);
-  font-family:'Montserrat',system-ui,sans-serif;font-weight:300;
+  font-family:'Montserrat',system-ui,sans-serif;font-weight:400;
   line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-variant-numeric:tabular-nums;
+  padding-bottom:clamp(2.4rem,6vw,4rem);
 }
 .wrap{max-width:1080px;margin:0 auto;padding:0 var(--sp)}
+[id]{scroll-margin-top:84px}
 
 /* ---------- header ---------- */
 .top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,9,6,.92);backdrop-filter:blur(8px);z-index:20}
@@ -50,7 +56,11 @@ body{
 .back:hover,.back:focus-visible{color:var(--violet-soft)}
 
 /* ---------- hero ---------- */
-.hero{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.6rem,4vw,2.4rem)}
+.hero{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.6rem,4vw,2.4rem);position:relative;overflow:hidden}
+.h-hero::before,.hero::before{
+  content:"";position:absolute;left:0;right:0;top:-22%;height:155%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 58% 46% at 50% 42%,rgba(139,92,246,.13),rgba(139,92,246,0) 72%);
+}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--violet);margin-bottom:1rem}
 .room-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,10vw,5.6rem);line-height:.94;letter-spacing:-.015em}
 .room-full{font-size:clamp(.86rem,2.4vw,1rem);color:var(--cream-dim);margin-top:.9rem;max-width:46ch}
@@ -61,7 +71,7 @@ body{
 .v-cell{padding:1.35rem 1.15rem;border-right:1px solid var(--line)}
 .v-cell:last-child{border-right:none}
 .v-label{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:.55rem}
-.v-value{font-size:1.02rem;font-weight:500;line-height:1.35}
+.v-value{font-family:'IBM Plex Mono',monospace;font-size:1.04rem;font-weight:500;line-height:1.35;letter-spacing:-.005em}
 .v-yes{color:var(--violet-soft)}
 .v-warn{color:var(--amber)}
 .v-no{color:var(--rust)}
@@ -100,9 +110,16 @@ body{
 .steps li strong{font-weight:500;color:var(--cream)}
 .linkbox{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:.7rem}
 .linkbox code{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--violet-soft);background:var(--panel-2);border:1px solid var(--line);padding:.42rem .6rem;word-break:break-all}
-.copy{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);background:none;border:1px solid var(--line);padding:.44rem .7rem;cursor:pointer;transition:color .2s,border-color .2s}
-.copy:hover,.copy:focus-visible{color:var(--violet-soft);border-color:var(--violet)}
-.copy.done{color:var(--violet);border-color:var(--violet)}
+.copy{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);background:none;border:1px solid var(--line);padding:.44rem .7rem;cursor:pointer;transition:color .2s,border-color .2s,box-shadow .2s}
+.copy:hover,.copy:focus-visible{color:var(--violet-soft);border-color:var(--violet);box-shadow:0 0 15px rgba(139,92,246,.3)}
+.copy.done{color:var(--violet);border-color:var(--violet);box-shadow:0 0 18px rgba(139,92,246,.45)}
+/* кнопка копирования на ключевом шаге — тоже дышит */
+.steps li.key .copy{animation:copyGlow 2.6s ease-in-out infinite}
+@keyframes copyGlow{
+  0%,100%{border-color:var(--line);box-shadow:0 0 0 rgba(139,92,246,0)}
+  50%{border-color:var(--violet);box-shadow:0 0 16px rgba(139,92,246,.34)}
+}
+.steps li.key .copy:hover,.steps li.key .copy:focus-visible{animation-play-state:paused}
 button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-serif}
 .steps a,.callout a{color:var(--violet-soft);text-decoration:none;border-bottom:1px solid rgba(139,92,246,.45);transition:color .2s,border-color .2s}
 .steps a:hover,.steps a:focus-visible,.callout a:hover,.callout a:focus-visible{color:var(--cream);border-bottom-color:var(--cream)}
@@ -118,9 +135,18 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .cta{
   display:block;text-align:center;background:var(--violet);color:#0a0906;
   font-family:'Montserrat',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;
-  padding:.95rem 1rem;text-decoration:none;transition:background .2s,transform .2s;
+  padding:.95rem 1rem;text-decoration:none;position:relative;
+  transition:background .2s,transform .2s,box-shadow .25s;
+  animation:ctaGlow 2.6s ease-in-out infinite;
 }
-.cta:hover,.cta:focus-visible{background:var(--violet-soft);transform:translateY(-1px)}
+@keyframes ctaGlow{
+  0%,100%{box-shadow:0 0 9px rgba(139,92,246,.28),0 0 24px rgba(139,92,246,.10)}
+  50%{box-shadow:0 0 19px rgba(139,92,246,.58),0 0 44px rgba(139,92,246,.24)}
+}
+.cta:hover,.cta:focus-visible{
+  background:var(--violet-soft);transform:translateY(-1px);animation-play-state:paused;
+  box-shadow:0 0 24px rgba(139,92,246,.72),0 0 56px rgba(139,92,246,.32),inset 0 0 14px rgba(255,255,255,.18);
+}
 .card .fine{font-size:.75rem;color:var(--cream-dim);margin-top:.95rem;line-height:1.55}
 .pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.1em;color:var(--amber);border:1px solid var(--line);padding:.3rem .55rem;margin-top:1rem}
 
@@ -132,7 +158,7 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .fade:nth-child(2){animation-delay:.07s}
 .fade:nth-child(3){animation-delay:.14s}
 @keyframes up{to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}*{transition:none!important}.cta,.cta-ghost,.steps li.key .copy{animation:none}.cta{box-shadow:0 0 14px rgba(139,92,246,.4),0 0 34px rgba(139,92,246,.16)}}
 
 /* ---------- список румов ---------- */
 .filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.6rem,4vw,2.4rem) 0 1.6rem}
@@ -148,9 +174,15 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .room-item{border-bottom:1px solid var(--line)}
 .room-item a{
   display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
-  padding:1.25rem .3rem;text-decoration:none;color:inherit;transition:background .18s;
+  padding:1.25rem .3rem;text-decoration:none;color:inherit;position:relative;
+  transition:background .18s,transform .2s cubic-bezier(.2,.7,.3,1);
 }
-.room-item a:hover,.room-item a:focus-visible{background:var(--panel)}
+.room-item a::before{
+  content:"";position:absolute;left:-.55rem;top:.35rem;bottom:.35rem;width:2px;background:var(--violet);
+  transform:scaleY(0);transition:transform .24s cubic-bezier(.2,.7,.3,1);
+}
+.room-item a:hover,.room-item a:focus-visible{background:var(--panel);transform:translateX(4px)}
+.room-item a:hover::before,.room-item a:focus-visible::before{transform:scaleY(1)}
 .ri-net{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
 .ri-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:400;line-height:1.15;margin:.15rem 0 .2rem}
 .ri-tag{font-size:.86rem;color:var(--cream-dim);max-width:52ch}
@@ -165,7 +197,7 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .list-empty{color:var(--cream-dim);padding:2rem .3rem;font-size:.9rem}
 
 /* ---------- главная ---------- */
-.h-hero{padding:clamp(3.5rem,11vw,8rem) 0 clamp(2.5rem,6vw,4rem);position:relative}
+.h-hero{padding:clamp(3.5rem,11vw,8rem) 0 clamp(2.5rem,6vw,4rem);position:relative;overflow:hidden}
 
 /* Знак в пустом пространстве справа от тезиса. Только на широких экранах —
    на узких он полез бы под текст */
@@ -219,6 +251,8 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .room-strip a:hover,.room-strip a:focus-visible{color:var(--violet-soft);border-color:var(--violet)}
 
 .ab-text{max-width:62ch}
+/* кнопка внутри .ab-text не попадала под общее правило отступа — задаём явно */
+.ab-cta{margin-top:clamp(1.8rem,4vw,2.6rem)}
 
 .h-about{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,3rem);align-items:center}
 @media(min-width:880px){.h-about{grid-template-columns:1.1fr 1fr}}
@@ -236,8 +270,9 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .ticks li::before{content:"—";position:absolute;left:0;color:var(--violet)}
 .h-band .cta-inline,.h-sec > .cta-inline{margin-top:1.8rem}
 
-.cta-ghost{background:none;color:var(--violet-soft);border:1px solid var(--violet)}
-.cta-ghost:hover,.cta-ghost:focus-visible{background:none;color:var(--cream);border-color:var(--cream)}
+.cta-ghost{background:none;color:var(--violet-soft);border:1px solid var(--violet);animation-delay:1.3s}
+.cta-ghost:hover,.cta-ghost:focus-visible{background:none;color:var(--cream);border-color:var(--cream);
+  box-shadow:0 0 22px rgba(139,92,246,.42),inset 0 0 12px rgba(139,92,246,.14)}
 .btn-pair{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
 .btn-pair .cta-inline{margin-top:0}
 
@@ -295,7 +330,48 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   .ladder{grid-template-columns:1fr 1fr}
   .ladder .rung:last-child{grid-column:1 / -1}
 }
+
+
+/* ---------- скругления и подсветка кромки ---------- */
+.cta,.copy,.f-btn,.pill,.ri-track,.room-strip a,.linkbox code{border-radius:var(--r)}
+.card,.ab-fade{border-radius:var(--r-lg)}
+.ladder,.vs{border-radius:var(--r-lg);overflow:hidden}
+.card{box-shadow:inset 0 1px 0 rgba(240,234,216,.05)}
+.card:hover{border-color:#3a332d}
+.card{transition:border-color .25s}
+
+/* ---------- появление блоков по скроллу ---------- */
+.js .rv{opacity:0;transform:translateY(20px)}
+.js .rv.is-in{
+  opacity:1;transform:none;
+  transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1);
+}
+
+/* ---------- липкая полоса на странице рума ---------- */
+.stickybar{
+  position:fixed;left:0;right:0;top:62px;z-index:18;
+  background:rgba(10,9,6,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  transform:translateY(-118%);opacity:0;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),opacity .3s;
+}
+.stickybar.is-on{transform:none;opacity:1}
+.stickybar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:52px}
+.sb-name{font-family:'Cormorant Garamond',serif;font-size:1.16rem;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-copy{flex-shrink:0;animation:none}
+@media(max-width:619px){
+  .stickybar .wrap{height:46px}
+  .sb-name{font-size:1rem}
+  .sb-copy{font-size:.6rem;padding:.36rem .55rem;letter-spacing:.06em}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none}
+  .stickybar{transition:none}
+  .room-item a:hover,.room-item a:focus-visible{transform:none}
+}
 </style>
+<script>document.documentElement.className+=" js"</script>
 </head>
 <body>
 
@@ -306,6 +382,13 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   </div>
 </header>
 
+<div class="stickybar" id="stickybar" aria-hidden="true">
+  <div class="wrap">
+    <span class="sb-name">BetOnline</span>
+    <button class="copy sb-copy" type="button" data-copy="#reflink">Скопировать ссылку</button>
+  </div>
+</div>
+
 <section class="wrap hero">
   <div class="eyebrow fade">Сеть Chico</div>
   <h1 class="room-name fade">BetOnline</h1>
@@ -314,16 +397,16 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 <section class="verdict">
   <div class="wrap">
-    <div class="verdict-inner">      <div class="v-cell">
+    <div class="verdict-inner">      <div class="v-cell rv">
         <div class="v-label">Трекеры и HUD</div>
         <div class="v-value v-yes">Разрешены</div>
-      </div>      <div class="v-cell">
+      </div>      <div class="v-cell rv">
         <div class="v-label">Бонус</div>
         <div class="v-value v-yes">100% до $1 000</div>
-      </div>      <div class="v-cell">
+      </div>      <div class="v-cell rv">
         <div class="v-label">Отыгрыш</div>
         <div class="v-value v-yes">50%</div>
-      </div>      <div class="v-cell">
+      </div>      <div class="v-cell rv">
         <div class="v-label">Ловушка</div>
         <div class="v-value v-warn">Бонусов три вида</div>
       </div>    </div>
@@ -331,22 +414,22 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 </section>
 
 <div class="wrap cols">
-  <main>    <div class="block">
-      <div class="block-head"><h2>Доступность</h2></div>
-      <div class="rows">        <div class="row"><div class="k">Устройство</div><div class="val">Покер — раздел внутри платформы со ставками и казино</div></div>        <div class="row"><div class="k">Регистрация</div><div class="val">На сайте по ссылке, не в клиенте</div></div>        <div class="row"><div class="k">Привязка</div><div class="val">Только по ссылке, промокод не нужен</div></div>        <div class="row"><div class="k">Способы игры</div><div class="val">Десктоп-клиент, браузер, мобильный</div></div>        <div class="row"><div class="k">Трекеры</div><div class="val">Разрешены</div></div>      </div>
-    </div>    <div class="block">
-      <div class="block-head"><h2>Депозит и бонусы</h2><span class="checked">проверено 28.07.2026</span></div>
-      <div class="rows">        <div class="row"><div class="k">Бонус</div><div class="val">100% до $1 000, минимальный депозит $50</div></div>        <div class="row"><div class="k">Отыгрыш</div><div class="val">$10 за каждые $20 рейка — около 50%</div></div>        <div class="row"><div class="k">Дополнительно</div><div class="val">Бесплатные турнирные билеты первые 8 дней</div></div>        <div class="row"><div class="k">Срок</div><div class="val">30 дней</div></div>      </div>
-    </div>    <div class="callout callout--between">
-      <p class="c-lead">Проверь в кассе, какой бонус активируется.</p>
-      <p>В аккаунте параллельно идут бонусы для ставок и казино. Для покера нужен именно Poker Welcome Bonus — активируешь не тот, и рейк будет отыгрывать чужой бонус.</p>
-    </div>    <div class="block">
-      <div class="block-head"><h2>Кэшауты</h2><span class="checked">проверено 28.07.2026</span></div>
-      <div class="rows">        <div class="row"><div class="k">Способы</div><div class="val">Около 17 криптовалют и банковский перевод. Набор доступных методов зависит от суммы вывода</div></div>        <div class="row"><div class="k">Минимум</div><div class="val">$20 в крипте. Банковским переводом — от $2 500</div></div>        <div class="row"><div class="k">Максимум</div><div class="val">Без лимита в BTC, ETH, USDT и USDC. У остальных монет потолок от $10 000 до $50 000</div></div>        <div class="row"><div class="k">Сроки</div><div class="val">Крипта — до 24 часов, по опыту часто за пару часов. Банковский перевод — 15 дней</div></div>        <div class="row"><div class="k">Комиссия</div><div class="val">Зависит от суммы. В BTC вывод без комиссии</div></div>      </div>
-    </div>
-    <div class="block">
+  <main>
+    <div class="block rv">
       <div class="block-head"><h2>Как зарегистрироваться</h2></div>
       <ol class="steps">        <li>Возьми чистый браузер, которым не пользуешься каждый день — Edge, Chrome, Mozilla или Opera        </li>        <li>Скопируй ссылку и вставь её в чистый браузер — регистрируйся именно по ней, иначе привязка не сработает          <span class="linkbox"><code id="reflink">https://eqlbm.club/go/betonline</code><button class="copy" type="button" data-copy="#reflink">Копировать</button></span>        </li>        <li>Заполни форму регистрации. Поле промокода оставь пустым        </li>        <li>Войди в аккаунт и открой раздел Poker — там выбери клиент, браузер или мобильный покер        </li>        <li class="key"><strong>Пришли мне ник и почту</strong>, с которой зарегистрирован аккаунт — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши в телеграм</a>          <span class="step-note">Без этого шага аккаунт не привязывается. Условия по нему не начнут действовать.</span>        </li>        <li>Перед депозитом проверь в кассе, что активируется именно Poker Welcome Bonus        </li>      </ol>
+    </div>    <div class="block rv">
+      <div class="block-head"><h2>Доступность</h2></div>
+      <div class="rows">        <div class="row"><div class="k">Устройство</div><div class="val">Покер — раздел внутри платформы со ставками и казино</div></div>        <div class="row"><div class="k">Регистрация</div><div class="val">На сайте по ссылке, не в клиенте</div></div>        <div class="row"><div class="k">Привязка</div><div class="val">Только по ссылке, промокод не нужен</div></div>        <div class="row"><div class="k">Способы игры</div><div class="val">Десктоп-клиент, браузер, мобильный</div></div>        <div class="row"><div class="k">Трекеры</div><div class="val">Разрешены</div></div>      </div>
+    </div>    <div class="block rv">
+      <div class="block-head"><h2>Депозит и бонусы</h2><span class="checked">проверено 28.07.2026</span></div>
+      <div class="rows">        <div class="row"><div class="k">Бонус</div><div class="val">100% до $1 000, минимальный депозит $50</div></div>        <div class="row"><div class="k">Отыгрыш</div><div class="val">$10 за каждые $20 рейка — около 50%</div></div>        <div class="row"><div class="k">Дополнительно</div><div class="val">Бесплатные турнирные билеты первые 8 дней</div></div>        <div class="row"><div class="k">Срок</div><div class="val">30 дней</div></div>      </div>
+    </div>    <div class="callout callout--between rv">
+      <p class="c-lead">Проверь в кассе, какой бонус активируется.</p>
+      <p>В аккаунте параллельно идут бонусы для ставок и казино. Для покера нужен именно Poker Welcome Bonus — активируешь не тот, и рейк будет отыгрывать чужой бонус.</p>
+    </div>    <div class="block rv">
+      <div class="block-head"><h2>Кэшауты</h2><span class="checked">проверено 28.07.2026</span></div>
+      <div class="rows">        <div class="row"><div class="k">Способы</div><div class="val">Около 17 криптовалют и банковский перевод. Набор доступных методов зависит от суммы вывода</div></div>        <div class="row"><div class="k">Минимум</div><div class="val">$20 в крипте. Банковским переводом — от $2 500</div></div>        <div class="row"><div class="k">Максимум</div><div class="val">Без лимита в BTC, ETH, USDT и USDC. У остальных монет потолок от $10 000 до $50 000</div></div>        <div class="row"><div class="k">Сроки</div><div class="val">Крипта — до 24 часов, по опыту часто за пару часов. Банковский перевод — 15 дней</div></div>        <div class="row"><div class="k">Комиссия</div><div class="val">Зависит от суммы. В BTC вывод без комиссии</div></div>      </div>
     </div>
 
   </main>
@@ -360,9 +443,6 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   </aside>
 </div>
 
-<footer class="foot">
-  <div class="wrap">Условия румов меняются. Даты проверки указаны у каждого блока — актуальное всегда на сайте рума.</div>
-</footer>
 
 <script>
 document.querySelectorAll('[data-copy]').forEach(function(btn){
@@ -375,5 +455,53 @@ document.querySelectorAll('[data-copy]').forEach(function(btn){
   });
 });
 </script>
-</body>
+<script>
+(function(){
+  var quiet = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rv');
+
+  if (!items.length) { /* нечего показывать */ }
+  else if (quiet || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('is-in');
+  } else {
+    /* задержка внутри одной группы, чтобы соседи проявлялись друг за другом */
+    var seen = new Map();
+    items.forEach(function(el){
+      var key = el.parentNode;
+      var n = seen.get(key) || 0;
+      seen.set(key, n + 1);
+      if (n) el.style.transitionDelay = Math.min(n * 60, 240) + 'ms';
+    });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* липкая полоса появляется, когда первый экран уехал вверх */
+  var bar = document.getElementById('stickybar');
+  var hero = document.querySelector('.hero');
+  if (bar && hero) {
+    var show = function(on){
+      bar.classList.toggle('is-on', on);
+      bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries){
+        show(!entries[0].isIntersecting);
+      }, { rootMargin: '-70px 0px 0px 0px' }).observe(hero);
+    } else {
+      window.addEventListener('scroll', function(){
+        show(window.pageYOffset > hero.offsetHeight);
+      }, { passive: true });
+    }
+  }
+})();
+</script></body>
 </html>
