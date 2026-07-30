@@ -50,7 +50,8 @@ body{
 /* ---------- header ---------- */
 .top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,9,6,.92);backdrop-filter:blur(8px);z-index:20}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.mark{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.16em;color:var(--cream)}
+.mark{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.16em;color:var(--cream);text-decoration:none;display:inline-block;transition:color .2s}
+.mark:hover,.mark:focus-visible{color:var(--violet-soft)}
 .mark span{color:var(--violet)}
 .back{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s}
 .back:hover,.back:focus-visible{color:var(--violet-soft)}
@@ -161,14 +162,6 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 @media(prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}*{transition:none!important}.cta,.cta-ghost,.steps li.key .copy{animation:none}.cta{box-shadow:0 0 14px rgba(139,92,246,.4),0 0 34px rgba(139,92,246,.16)}}
 
 /* ---------- список румов ---------- */
-.filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.6rem,4vw,2.4rem) 0 1.6rem}
-.f-btn{
-  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--cream-dim);background:none;border:1px solid var(--line);padding:.5rem .85rem;cursor:pointer;
-  transition:color .2s,border-color .2s;
-}
-.f-btn:hover,.f-btn:focus-visible{color:var(--violet-soft);border-color:var(--violet)}
-.f-btn.is-on{color:var(--ink);background:var(--violet);border-color:var(--violet)}
 
 .room-list{list-style:none;border-top:1px solid var(--line)}
 .room-item{border-bottom:1px solid var(--line)}
@@ -185,7 +178,7 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .room-item a:hover::before,.room-item a:focus-visible::before{transform:scaleY(1)}
 .ri-net{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
 .ri-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:400;line-height:1.15;margin:.15rem 0 .2rem}
-.ri-tag{font-size:.86rem;color:var(--cream-dim);max-width:52ch}
+.ri-tag{font-size:.86rem;color:var(--cream-dim);max-width:none;text-wrap:pretty}
 .ri-side{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem}
 @media(min-width:620px){.ri-side{align-items:flex-end}}
 .ri-track{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.09em;padding:.3rem .55rem;border:1px solid var(--line)}
@@ -194,7 +187,6 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .ri-no{color:var(--rust);border-color:rgba(180,100,79,.35)}
 .ri-go{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
 .room-item a:hover .ri-go{color:var(--violet-soft)}
-.list-empty{color:var(--cream-dim);padding:2rem .3rem;font-size:.9rem}
 
 /* ---------- главная ---------- */
 .h-hero{padding:clamp(3.5rem,11vw,8rem) 0 clamp(2.5rem,6vw,4rem);position:relative;overflow:hidden}
@@ -315,13 +307,6 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
   /* Заголовки блоков и подписи дат не должны налезать друг на друга */
   .block-head{flex-wrap:wrap;gap:.4rem}
-
-  /* Фильтр румов прокручивается вбок, а не ломает раскладку */
-  .filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.4rem;-webkit-overflow-scrolling:touch}
-  .f-btn{flex:0 0 auto}
-
-  /* Шаги регистрации: номер ближе к тексту */
-  .steps li{padding-left:2.1rem}
 }
 
 /* Планшет в портрете: список румов уже стоит колонкой, но карточки лестницы
@@ -333,7 +318,7 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 
 /* ---------- скругления и подсветка кромки ---------- */
-.cta,.copy,.f-btn,.pill,.ri-track,.room-strip a,.linkbox code{border-radius:var(--r)}
+.cta,.copy,.pill,.ri-track,.room-strip a,.linkbox code{border-radius:var(--r)}
 .card,.ab-fade{border-radius:var(--r-lg)}
 .ladder,.vs{border-radius:var(--r-lg);overflow:hidden}
 .card{box-shadow:inset 0 1px 0 rgba(240,234,216,.05)}
@@ -370,6 +355,46 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   .stickybar{transition:none}
   .room-item a:hover,.room-item a:focus-visible{transform:none}
 }
+
+
+/* ---------- логотипы румов ---------- */
+.room-head{display:flex;align-items:center;gap:clamp(1rem,2.5vw,1.5rem)}
+.room-head-text{min-width:0}
+.room-logo{
+  width:72px;height:72px;flex-shrink:0;display:block;
+  border:1px solid var(--line);border-radius:var(--r-lg);
+}
+.stickybar .sb-logo{width:26px;height:26px;border:1px solid var(--line);border-radius:4px;flex-shrink:0}
+.stickybar .wrap .sb-left{display:flex;align-items:center;gap:.6rem;min-width:0}
+@media(max-width:619px){
+  .room-logo{width:52px;height:52px}
+}
+
+
+/* ---------- логотип в строке списка ---------- */
+.ri-lead{
+  display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;
+  gap:1rem;flex:1 1 0%;min-width:0;
+}
+.ri-main{min-width:0}
+.ri-logo{
+  flex:0 0 44px;width:44px;height:44px;max-width:none;display:block;
+  border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.3,1);
+}
+.room-item a:hover .ri-logo,.room-item a:focus-visible .ri-logo{border-color:var(--violet);transform:scale(1.05)}
+@media(max-width:619px){
+  /* Блок с логотипом занимает всю строку, иначе .ri-side с width:100%
+     умещается рядом и схлопывает название до нулевой ширины */
+  .ri-lead{flex:1 1 100%;gap:.75rem}
+  .ri-logo{flex-basis:38px;width:38px;height:38px}
+  .ri-tag{font-size:.83rem}
+  .callout{padding:1.05rem 1.1rem}
+  .hero-note{margin-top:1.1rem}
+}
+
+.hero-note{margin:1.4rem 0 0;max-width:64ch}
+.hero-note p{font-size:.95rem;line-height:1.6}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -377,7 +402,7 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 <header class="top">
   <div class="wrap">
-    <div class="mark">EQLBM<span>.</span>CLUB</div>
+    <a class="mark" href="/">EQLBM<span>.</span>CLUB</a>
     <a class="back" href="/">← На главную</a>
   </div>
 </header>
@@ -385,224 +410,242 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 <section class="wrap hero">
   <div class="eyebrow fade">14 румов</div>
   <h1 class="room-name fade">Румы</h1>
-  <p class="room-full fade">Рум выбирается не по размеру бонуса, а по тому, разрешён ли в нём твой софт и на каких условиях оттуда выходят деньги. Ниже — то и другое по каждому.</p>
+  <div class="callout hero-note fade">
+    <p>Для надежной привязки нового аккаунта к EQLBM.CLUB при регистрации используйте чистый браузер, ссылку из гайда или реферальный код, если он указан в гайде.</p>
+  </div>
 </section>
 
 <div class="wrap">
-  <div class="filter" role="group" aria-label="Фильтр по трекерам">
-    <button class="f-btn is-on" type="button" data-filter="all">Все</button>
-    <button class="f-btn" type="button" data-filter="yes">Трекеры разрешены</button>
-    <button class="f-btn" type="button" data-filter="warn">Свой HUD в клиенте</button>
-    <button class="f-btn" type="button" data-filter="no">Без статистики</button>
-  </div>
 
   <ul class="room-list">
-    <li class="room-item rv" data-tracker="yes">
-      <a href="/rooms/acr/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть WPN</div>
-          <div class="ri-name">ACR</div>
-          <div class="ri-tag">Фиксированные 27% рейкбэка по запросу в поддержку</div>
-        </div>
-        <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
-          <span class="ri-go">Открыть →</span>
-        </div>
-      </a>
-    </li>
-    <li class="room-item rv" data-tracker="yes">
-      <a href="/rooms/blackchip/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть WPN</div>
-          <div class="ri-name">BlackChipPoker</div>
-          <div class="ri-tag">Фиксированные 27% рейкбэка — второй из двух скинов, где они есть</div>
-        </div>
-        <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
-          <span class="ri-go">Открыть →</span>
-        </div>
-      </a>
-    </li>
-    <li class="room-item rv" data-tracker="yes">
-      <a href="/rooms/champion/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть iPoker</div>
-          <div class="ri-name">Champion Poker</div>
-          <div class="ri-tag">Максимальный VIP сразу: 30% рейкбэка, но без бонуса</div>
-        </div>
-        <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
-          <span class="ri-go">Открыть →</span>
-        </div>
-      </a>
-    </li>
-    <li class="room-item rv" data-tracker="warn">
+    <li class="room-item rv">
       <a href="/rooms/coinpoker/">
-        <div class="ri-main">
-          <div class="ri-net">Крипто-рум</div>
-          <div class="ri-name">CoinPoker</div>
-          <div class="ri-tag">Без обязательного KYC, бонус 150% до $2 000</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/coinpoker.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Крипто-рум</div>
+            <div class="ri-name">CoinPoker</div>
+            <div class="ri-tag">Без обязательного KYC, бонус на первый депозит 150% до $2 000</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-warn">Запрещены, есть свой HUD</span>
+          <span class="ri-track ri-warn">Есть встроенный HUD</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="yes">
-      <a href="/rooms/yapoker/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть WPN</div>
-          <div class="ri-name">YaPoker</div>
-          <div class="ri-tag">Статусная VIP-система WPN</div>
-        </div>
-        <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
-          <span class="ri-go">Открыть →</span>
-        </div>
-      </a>
-    </li>
-    <li class="room-item rv" data-tracker="yes">
+    <li class="room-item rv">
       <a href="/rooms/truepoker/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть WPN</div>
-          <div class="ri-name">TruePoker</div>
-          <div class="ri-tag">Статусная VIP-система WPN</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/truepoker.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть WPN</div>
+            <div class="ri-name">TruePoker</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $2 000, статусная VIP-система WPN</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
+          <span class="ri-track ri-yes">HUD разрешен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="yes">
-      <a href="/rooms/pokerking/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть WPN</div>
-          <div class="ri-name">PokerKing</div>
-          <div class="ri-tag">Статусная система Royal Club</div>
+    <li class="room-item rv">
+      <a href="/rooms/champion/">
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/champion.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть iPoker</div>
+            <div class="ri-name">Champion Poker</div>
+            <div class="ri-tag">Максимальный VIP сразу: 30% рейкбэка, но без бонуса на первый депозит</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
+          <span class="ri-track ri-yes">HUD разрешен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="yes">
+    <li class="room-item rv">
       <a href="/rooms/betonline/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть Chico</div>
-          <div class="ri-name">BetOnline</div>
-          <div class="ri-tag">Самый быстрый отыгрыш бонуса в сети Chico — около 50%</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/betonline.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть Chico</div>
+            <div class="ri-name">BetOnline</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $1 000</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
+          <span class="ri-track ri-yes">HUD разрешен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="yes">
+    <li class="room-item rv">
+      <a href="/rooms/yapoker/">
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/yapoker.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть WPN</div>
+            <div class="ri-name">YaPoker</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $2 000, статусная VIP-система WPN</div>
+          </div>
+        </div>
+        <div class="ri-side">
+          <span class="ri-track ri-yes">HUD разрешен</span>
+          <span class="ri-go">Открыть →</span>
+        </div>
+      </a>
+    </li>
+    <li class="room-item rv">
+      <a href="/rooms/blackchip/">
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/blackchip.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть WPN</div>
+            <div class="ri-name">BlackChipPoker</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $2 000, статусная VIP-система WPN</div>
+          </div>
+        </div>
+        <div class="ri-side">
+          <span class="ri-track ri-yes">HUD разрешен</span>
+          <span class="ri-go">Открыть →</span>
+        </div>
+      </a>
+    </li>
+    <li class="room-item rv">
+      <a href="/rooms/acr/">
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/acr.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть WPN</div>
+            <div class="ri-name">ACR</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $2 000, VIP-система Elite Benefits до 65%</div>
+          </div>
+        </div>
+        <div class="ri-side">
+          <span class="ri-track ri-yes">HUD разрешен</span>
+          <span class="ri-go">Открыть →</span>
+        </div>
+      </a>
+    </li>
+    <li class="room-item rv">
+      <a href="/rooms/pokerking/">
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/pokerking.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть WPN</div>
+            <div class="ri-name">PokerKing</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $2 000, статусная система Royal Club</div>
+          </div>
+        </div>
+        <div class="ri-side">
+          <span class="ri-track ri-yes">HUD разрешен</span>
+          <span class="ri-go">Открыть →</span>
+        </div>
+      </a>
+    </li>
+    <li class="room-item rv">
       <a href="/rooms/sportsbetting/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть Chico</div>
-          <div class="ri-name">SportsBetting.ag</div>
-          <div class="ri-tag">Тот же отыгрыш, что у BetOnline — около 50%</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/sportsbetting.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть Chico</div>
+            <div class="ri-name">SportsBetting.ag</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $1 000</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
+          <span class="ri-track ri-yes">HUD разрешен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="yes">
+    <li class="room-item rv">
       <a href="/rooms/tigergaming/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть Chico</div>
-          <div class="ri-name">TigerGaming</div>
-          <div class="ri-tag">Отыгрыш около 10% — слабее двух других скинов Chico</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/tigergaming.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть Chico</div>
+            <div class="ri-name">TigerGaming</div>
+            <div class="ri-tag">Бонус на первый депозит 100% до $1 000</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-yes">Разрешены</span>
+          <span class="ri-track ri-yes">HUD разрешен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="warn">
+    <li class="room-item rv">
       <a href="/rooms/bcpoker/">
-        <div class="ri-main">
-          <div class="ri-net">Крипто-рум</div>
-          <div class="ri-name">BCPoker</div>
-          <div class="ri-tag">Выплаты почти мгновенно, рейкбэк до 65%</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/bcpoker.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Крипто-рум</div>
+            <div class="ri-name">BCPoker</div>
+            <div class="ri-tag">Мгновенные выплаты, рейкбэк до 65%, бонус на первый депозит 10% до $200</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-warn">Запрещены, есть свой HUD</span>
+          <span class="ri-track ri-warn">Есть встроенный HUD</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="warn">
+    <li class="room-item rv">
       <a href="/rooms/pokerdom/">
-        <div class="ri-main">
-          <div class="ri-net">Рум для СНГ</div>
-          <div class="ri-name">PokerDom</div>
-          <div class="ri-tag">Рубль и новая программа «Пять рыб» с рейкбэком до 70%</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/pokerdom.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Рум для СНГ</div>
+            <div class="ri-name">PokerDom</div>
+            <div class="ri-tag">«Пять рыб» с рейкбэком до 70%, бонус на первый депозит 100% до ₽50 000</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-warn">Запрещены, есть свой HUD</span>
+          <span class="ri-track ri-warn">Есть встроенный HUD</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="no">
+    <li class="room-item rv">
       <a href="/rooms/rptbet/">
-        <div class="ri-main">
-          <div class="ri-net">Сеть Stretch</div>
-          <div class="ri-name">RPTBet</div>
-          <div class="ri-tag">Только кэш — турниры не участвуют ни в бонусе, ни в рейкбэке</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/rptbet.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Сеть Stretch</div>
+            <div class="ri-name">RPTBet</div>
+            <div class="ri-tag">Бонус на первый депозит до ₽250 000, только кэш — турниры не участвуют</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-no">Запрещены</span>
+          <span class="ri-track ri-no">HUD запрещен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
-    <li class="room-item rv" data-tracker="no">
+    <li class="room-item rv">
       <a href="/rooms/nexa/">
-        <div class="ri-main">
-          <div class="ri-net">Экосистема WPT</div>
-          <div class="ri-name">NexaPoker</div>
-          <div class="ri-tag">Недоступен для игры из Беларуси и России</div>
+        <div class="ri-lead">
+          <img class="ri-logo" src="/assets/rooms/nexa.png" alt="" width="44" height="44">
+          <div class="ri-main">
+            <div class="ri-net">Экосистема WPT</div>
+            <div class="ri-name">NexaPoker</div>
+            <div class="ri-tag">Недоступен для игры из Беларуси и России</div>
+          </div>
         </div>
         <div class="ri-side">
-          <span class="ri-track ri-no">Запрещены</span>
+          <span class="ri-track ri-no">HUD запрещен</span>
           <span class="ri-go">Открыть →</span>
         </div>
       </a>
     </li>
   </ul>
-
-  <p class="list-empty" hidden>В этой категории румов нет.</p>
 </div>
 
 
-<script>
-var btns = document.querySelectorAll('.f-btn');
-var items = document.querySelectorAll('.room-item');
-var empty = document.querySelector('.list-empty');
-btns.forEach(function(b){
-  b.addEventListener('click', function(){
-    btns.forEach(function(x){ x.classList.remove('is-on'); });
-    b.classList.add('is-on');
-    var f = b.dataset.filter, shown = 0;
-    items.forEach(function(it){
-      var ok = (f === 'all' || it.dataset.tracker === f);
-      it.hidden = !ok;
-      if (ok) shown++;
-    });
-    empty.hidden = shown > 0;
-  });
-});
-</script>
 <script>
 (function(){
   var quiet = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

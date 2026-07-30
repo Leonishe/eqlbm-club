@@ -50,7 +50,8 @@ body{
 /* ---------- header ---------- */
 .top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,9,6,.92);backdrop-filter:blur(8px);z-index:20}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.mark{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.16em;color:var(--cream)}
+.mark{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.16em;color:var(--cream);text-decoration:none;display:inline-block;transition:color .2s}
+.mark:hover,.mark:focus-visible{color:var(--violet-soft)}
 .mark span{color:var(--violet)}
 .back{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s}
 .back:hover,.back:focus-visible{color:var(--violet-soft)}
@@ -161,14 +162,6 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 @media(prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}*{transition:none!important}.cta,.cta-ghost,.steps li.key .copy{animation:none}.cta{box-shadow:0 0 14px rgba(139,92,246,.4),0 0 34px rgba(139,92,246,.16)}}
 
 /* ---------- список румов ---------- */
-.filter{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.6rem,4vw,2.4rem) 0 1.6rem}
-.f-btn{
-  font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--cream-dim);background:none;border:1px solid var(--line);padding:.5rem .85rem;cursor:pointer;
-  transition:color .2s,border-color .2s;
-}
-.f-btn:hover,.f-btn:focus-visible{color:var(--violet-soft);border-color:var(--violet)}
-.f-btn.is-on{color:var(--ink);background:var(--violet);border-color:var(--violet)}
 
 .room-list{list-style:none;border-top:1px solid var(--line)}
 .room-item{border-bottom:1px solid var(--line)}
@@ -185,7 +178,7 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .room-item a:hover::before,.room-item a:focus-visible::before{transform:scaleY(1)}
 .ri-net{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
 .ri-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:400;line-height:1.15;margin:.15rem 0 .2rem}
-.ri-tag{font-size:.86rem;color:var(--cream-dim);max-width:52ch}
+.ri-tag{font-size:.86rem;color:var(--cream-dim);max-width:none;text-wrap:pretty}
 .ri-side{display:flex;flex-direction:column;align-items:flex-start;gap:.45rem}
 @media(min-width:620px){.ri-side{align-items:flex-end}}
 .ri-track{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.09em;padding:.3rem .55rem;border:1px solid var(--line)}
@@ -194,7 +187,6 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .ri-no{color:var(--rust);border-color:rgba(180,100,79,.35)}
 .ri-go{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
 .room-item a:hover .ri-go{color:var(--violet-soft)}
-.list-empty{color:var(--cream-dim);padding:2rem .3rem;font-size:.9rem}
 
 /* ---------- главная ---------- */
 .h-hero{padding:clamp(3.5rem,11vw,8rem) 0 clamp(2.5rem,6vw,4rem);position:relative;overflow:hidden}
@@ -315,13 +307,6 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
   /* Заголовки блоков и подписи дат не должны налезать друг на друга */
   .block-head{flex-wrap:wrap;gap:.4rem}
-
-  /* Фильтр румов прокручивается вбок, а не ломает раскладку */
-  .filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.4rem;-webkit-overflow-scrolling:touch}
-  .f-btn{flex:0 0 auto}
-
-  /* Шаги регистрации: номер ближе к тексту */
-  .steps li{padding-left:2.1rem}
 }
 
 /* Планшет в портрете: список румов уже стоит колонкой, но карточки лестницы
@@ -333,7 +318,7 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 
 /* ---------- скругления и подсветка кромки ---------- */
-.cta,.copy,.f-btn,.pill,.ri-track,.room-strip a,.linkbox code{border-radius:var(--r)}
+.cta,.copy,.pill,.ri-track,.room-strip a,.linkbox code{border-radius:var(--r)}
 .card,.ab-fade{border-radius:var(--r-lg)}
 .ladder,.vs{border-radius:var(--r-lg);overflow:hidden}
 .card{box-shadow:inset 0 1px 0 rgba(240,234,216,.05)}
@@ -370,6 +355,46 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   .stickybar{transition:none}
   .room-item a:hover,.room-item a:focus-visible{transform:none}
 }
+
+
+/* ---------- логотипы румов ---------- */
+.room-head{display:flex;align-items:center;gap:clamp(1rem,2.5vw,1.5rem)}
+.room-head-text{min-width:0}
+.room-logo{
+  width:72px;height:72px;flex-shrink:0;display:block;
+  border:1px solid var(--line);border-radius:var(--r-lg);
+}
+.stickybar .sb-logo{width:26px;height:26px;border:1px solid var(--line);border-radius:4px;flex-shrink:0}
+.stickybar .wrap .sb-left{display:flex;align-items:center;gap:.6rem;min-width:0}
+@media(max-width:619px){
+  .room-logo{width:52px;height:52px}
+}
+
+
+/* ---------- логотип в строке списка ---------- */
+.ri-lead{
+  display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;
+  gap:1rem;flex:1 1 0%;min-width:0;
+}
+.ri-main{min-width:0}
+.ri-logo{
+  flex:0 0 44px;width:44px;height:44px;max-width:none;display:block;
+  border:1px solid var(--line);border-radius:var(--r);
+  transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.3,1);
+}
+.room-item a:hover .ri-logo,.room-item a:focus-visible .ri-logo{border-color:var(--violet);transform:scale(1.05)}
+@media(max-width:619px){
+  /* Блок с логотипом занимает всю строку, иначе .ri-side с width:100%
+     умещается рядом и схлопывает название до нулевой ширины */
+  .ri-lead{flex:1 1 100%;gap:.75rem}
+  .ri-logo{flex-basis:38px;width:38px;height:38px}
+  .ri-tag{font-size:.83rem}
+  .callout{padding:1.05rem 1.1rem}
+  .hero-note{margin-top:1.1rem}
+}
+
+.hero-note{margin:1.4rem 0 0;max-width:64ch}
+.hero-note p{font-size:.95rem;line-height:1.6}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -377,21 +402,26 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 <header class="top">
   <div class="wrap">
-    <div class="mark">EQLBM<span>.</span>CLUB</div>
+    <a class="mark" href="/">EQLBM<span>.</span>CLUB</a>
     <a class="back" href="/rooms/">← Все румы</a>
   </div>
 </header>
 
 <div class="stickybar" id="stickybar" aria-hidden="true">
   <div class="wrap">
-    <span class="sb-name">PokerKing</span>
+    <span class="sb-left"><img class="sb-logo" src="/assets/rooms/pokerking.png" alt="" width="26" height="26"><span class="sb-name">PokerKing</span></span>
     <button class="copy sb-copy" type="button" data-copy="#reflink">Скопировать ссылку</button>
   </div>
 </div>
 
 <section class="wrap hero">
-  <div class="eyebrow fade">Сеть WPN</div>
-  <h1 class="room-name fade">PokerKing</h1>
+  <div class="room-head fade">
+    <img class="room-logo" src="/assets/rooms/pokerking.png" alt="" width="72" height="72">
+    <div class="room-head-text">
+      <div class="eyebrow">Сеть WPN</div>
+      <h1 class="room-name">PokerKing</h1>
+    </div>
+  </div>
   <p class="room-full fade">PokerKing. Скин сети Winning Poker Network — трекеры разрешены, ограничений по стране для игроков из СНГ нет.</p>
 </section>
 
@@ -399,13 +429,13 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   <div class="wrap">
     <div class="verdict-inner">      <div class="v-cell rv">
         <div class="v-label">Трекеры и HUD</div>
-        <div class="v-value v-yes">Разрешены</div>
+        <div class="v-value v-yes">HUD разрешен</div>
       </div>      <div class="v-cell rv">
         <div class="v-label">Гео-ограничения</div>
         <div class="v-value v-yes">Нет</div>
       </div>      <div class="v-cell rv">
         <div class="v-label">Бонус</div>
-        <div class="v-value v-yes">100% до $2 000</div>
+        <div class="v-value v-yes">100% до $2 000</div>
       </div>      <div class="v-cell rv">
         <div class="v-label">KYC</div>
         <div class="v-value v-warn">Пройти до депозита</div>
@@ -423,13 +453,13 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
       <div class="rows">        <div class="row"><div class="k">Лицензия</div><div class="val">Кюрасао</div></div>        <div class="row"><div class="k">Страны</div><div class="val">Беларусь и Россия <em>не ограничены</em></div></div>        <div class="row"><div class="k">Платформы</div><div class="val">Windows, macOS, iOS, Android</div></div>        <div class="row"><div class="k">Регистрация</div><div class="val">Внутри клиента — на сайте зарегистрироваться нельзя</div></div>        <div class="row"><div class="k">Трекеры</div><div class="val">Разрешены</div></div>        <div class="row"><div class="k">Ограничение</div><div class="val">Клиент не запускается из-под виртуальной машины и при активном TeamViewer, AnyDesk или VNC</div></div>      </div>
     </div>    <div class="block rv">
       <div class="block-head"><h2>Депозит и бонусы</h2><span class="checked">проверено 28.07.2026</span></div>
-      <div class="rows">        <div class="row"><div class="k">Бонус</div><div class="val">100% до $2 000, минимальный депозит $25</div></div>        <div class="row"><div class="k">Отыгрыш</div><div class="val">$1 за каждые 27,5 Award Points — дает около 20% рейкбэка. Срок 60 дней</div></div>        <div class="row"><div class="k">Депозит</div><div class="val">Только крипта</div></div>        <div class="row"><div class="k">Лимиты</div><div class="val">От $10, до $25 000 за транзакцию</div></div>        <div class="row"><div class="k">VIP-рейкбэк</div><div class="val">Статусная система Royal Club. Фиксированных 27% здесь нет</div></div>      </div>
+      <div class="rows">        <div class="row"><div class="k">Бонус на первый депозит</div><div class="val">100% до $2 000, минимальный депозит $25</div></div>        <div class="row"><div class="k">Отыгрыш</div><div class="val">$1 за каждые 27,5 Award Points — дает около 20% рейкбэка. Срок 60 дней</div></div>        <div class="row"><div class="k">Депозит</div><div class="val">Только крипта</div></div>        <div class="row"><div class="k">Лимиты</div><div class="val">От $10, до $25 000 за транзакцию</div></div>        <div class="row"><div class="k">VIP-рейкбэк</div><div class="val">Статусная система Royal Club</div></div>      </div>
     </div>    <div class="callout callout--between rv">
       <p class="c-lead">Перед депозитом всегда проходи верификацию KYC.</p>
       <p>Рум спрашивает документы не сразу, и об этом легко забыть. Но пройти проверку придётся в любом случае — и упереться в неё в момент вывода, когда деньги уже нужны, гораздо неприятнее, чем сделать это заранее: My Account → Account Certification.</p>
     </div>    <div class="block rv">
       <div class="block-head"><h2>Кэшауты</h2><span class="checked">проверено 28.07.2026</span></div>
-      <div class="rows">        <div class="row"><div class="k">Способы</div><div class="val">Крипта</div></div>        <div class="row"><div class="k">Лимит</div><div class="val">$10 000 за один вывод</div></div>        <div class="row"><div class="k">Частота</div><div class="val">Крипту можно выводить подряд, без ограничений</div></div>        <div class="row"><div class="k">Сроки</div><div class="val">По личному опыту деньги могут идти до 5 дней, хотя чаще приходят за 24 часа</div></div>        <div class="row"><div class="k">Важно</div><div class="val">Возможна комиссия за вывод — зависит от агента</div></div>      </div>
+      <div class="rows">        <div class="row"><div class="k">Способы</div><div class="val">Крипта</div></div>        <div class="row"><div class="k">Лимит</div><div class="val">$10 000 за один вывод</div></div>        <div class="row"><div class="k">Частота</div><div class="val">Крипту можно выводить подряд, без ограничений</div></div>        <div class="row"><div class="k">Сроки</div><div class="val">По личному опыту деньги могут идти до 5 дней, хотя чаще приходят за 24 часа</div></div>        <div class="row"><div class="k">Важно</div><div class="val">Возможна комиссия за вывод — зависит от агента</div></div>      </div>
     </div>
 
   </main>
