@@ -29,6 +29,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
+  overflow-x:clip;
   background:var(--ink);color:var(--cream);
   font-family:'Montserrat',system-ui,sans-serif;font-weight:400;
   line-height:1.65;-webkit-font-smoothing:antialiased;
@@ -199,8 +200,6 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .h-sub{font-size:clamp(.95rem,2.4vw,1.12rem);color:var(--cream-dim);margin-top:1.4rem;max-width:46ch}
 .h-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem;margin-top:2.2rem}
 .cta-inline{display:inline-block;width:auto;padding:.95rem 2rem}
-.h-quiet{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s}
-.h-quiet:hover,.h-quiet:focus-visible{color:var(--violet-soft)}
 
 .h-band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(2.8rem,7vw,5rem) 0}
 .h-sec{padding:clamp(2.8rem,7vw,5rem) 0}
@@ -229,9 +228,26 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .vs-col li:last-child{border-bottom:none}
 .vs-no li{color:var(--cream-dim)}
 
-.room-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.8rem,4vw,2.4rem) 0}
-.room-strip a{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--cream-dim);border:1px solid var(--line);padding:.5rem .8rem;text-decoration:none;transition:color .2s,border-color .2s}
-.room-strip a:hover,.room-strip a:focus-visible{color:var(--violet-soft);border-color:var(--violet)}
+.room-strip{display:flex;flex-wrap:wrap;gap:.6rem;margin:clamp(1.8rem,4vw,2.4rem) 0}
+.room-strip a{
+  display:block;line-height:0;border:1px solid var(--line);border-radius:var(--r);
+  position:relative;
+  transition:border-color .2s,transform .2s cubic-bezier(.2,.7,.3,1);
+}
+/* название рума всплывает над плиткой */
+.room-strip a::after{
+  content:attr(data-name);
+  position:absolute;left:50%;bottom:calc(100% + .55rem);
+  transform:translateX(-50%) translateY(5px);
+  font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.09em;line-height:1;
+  white-space:nowrap;color:var(--cream);background:var(--panel);
+  border:1px solid var(--line);border-radius:var(--r);padding:.36rem .6rem;
+  opacity:0;pointer-events:none;z-index:6;
+  transition:opacity .18s,transform .18s cubic-bezier(.2,.7,.3,1);
+}
+.room-strip a:hover::after,.room-strip a:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0)}
+.room-strip a img{width:48px;height:48px;display:block;border-radius:calc(var(--r) - 1px)}
+.room-strip a:hover,.room-strip a:focus-visible{border-color:var(--violet);transform:translateY(-2px)}
 
 .ab-text{max-width:62ch}
 /* кнопка внутри .ab-text не попадала под общее правило отступа — задаём явно */
@@ -386,6 +402,40 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 .hero-note{margin:1.4rem 0 0;max-width:64ch}
 .hero-note p{font-size:.95rem;line-height:1.6}
+
+/* ---------- переход на фиксированный рейкбэк ---------- */
+.sw-body{color:var(--cream-dim);font-size:.93rem;max-width:70ch;margin-bottom:1.2rem}
+.sw-note{color:var(--cream-dim);font-size:.88rem;max-width:70ch;margin:.2rem 0 1rem}
+.sw-line{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1rem;margin-bottom:.7rem}
+.sw-label{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);min-width:9rem}
+.letter{
+  font-family:'IBM Plex Mono',monospace;font-size:.82rem;line-height:1.65;color:var(--cream);
+  background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--violet);
+  border-radius:var(--r);padding:1.1rem 1.2rem;margin:0 0 1.2rem;
+  white-space:pre-wrap;overflow-wrap:anywhere;max-width:70ch;
+}
+@media(max-width:619px){
+  .sw-label{min-width:0;width:100%}
+  .letter{font-size:.78rem;padding:.9rem 1rem}
+}
+
+/* спойлер */
+.sw-block{border:1px solid var(--line);border-radius:var(--r-lg);padding:1.15rem 1.3rem;transition:border-color .25s}
+.sw-block[open]{border-color:#3a332d}
+.sw-head{cursor:pointer;list-style:none;margin-bottom:0;justify-content:space-between;align-items:center}
+.sw-head::-webkit-details-marker{display:none}
+.sw-head:hover h2,.sw-block[open] .sw-head h2{color:var(--violet-soft)}
+.sw-head h2{transition:color .2s}
+.sw-mark{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);white-space:nowrap}
+.sw-mark::after{content:"развернуть"}
+.sw-block[open] .sw-mark::after{content:"свернуть"}
+.sw-block[open] .sw-head{margin-bottom:1.25rem}
+@media(max-width:619px){.sw-block{padding:1rem 1.05rem}}
+
+@media(max-width:619px){
+  .room-strip a img{width:42px;height:42px}
+  .room-strip a::after{display:none}
+}
 </style>
 </head>
 <body>
