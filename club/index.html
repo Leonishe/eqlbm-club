@@ -495,6 +495,37 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 ::-webkit-scrollbar-track{background:var(--ink)}
 ::-webkit-scrollbar-thumb{background:#3a332c;border-radius:6px;border:3px solid var(--ink)}
 ::-webkit-scrollbar-thumb:hover{background:#5a5048}
+/* ---------- тарифы на главной ---------- */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:2rem}
+.tier{background:var(--ink);padding:1.7rem 1.4rem;display:flex;flex-direction:column}
+.tier.is-vip{background:rgba(255,255,255,.022)}
+.tier-nm{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft)}
+.tier-for{font-size:.85rem;color:var(--cream-dim);margin-top:.55rem;min-height:5.1em}
+.tier-pr{display:flex;align-items:baseline;gap:.45rem;min-height:2.7rem}
+.tier-pr b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.5rem;line-height:1}
+.tier-pr span{color:var(--cream-dim);font-size:.85rem}
+.tier-next{display:flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.5rem .7rem;border:1px solid rgba(217,164,65,.35);border-radius:5px;min-height:2.5rem}
+.tier-next i{font-style:normal;font-size:.76rem;color:var(--cream-dim)}
+.tier-next b{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1rem;color:var(--amber)}
+.tier-next.flat{border-color:var(--line)}
+.tier-next.flat i{color:#6f6a62}
+.tier .ticks{flex:1;margin-top:1.2rem}
+.tier .cta{margin-top:1.5rem;width:100%;text-align:center}
+.tier-note{margin-top:1.5rem}
+.tier-note p+p{margin-top:.5rem;color:var(--cream-dim);font-size:.88rem}
+
+/* ---------- цифры в блоке румов ---------- */
+.figs{display:flex;gap:2.2rem;flex-wrap:wrap;margin:1.5rem 0 .5rem}
+.fig b{display:block;font-family:'Montserrat',system-ui,sans-serif;font-weight:500;font-size:1.65rem;line-height:1.1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--cream)}
+.fig span{display:block;margin-top:.4rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
+
+/* ---------- карточки «что ты получаешь» ---------- */
+.gets{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:2rem}
+.get{background:var(--ink);padding:1.6rem 1.4rem}
+.get h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.3rem;margin:0 0 .5rem}
+.get p{font-size:.89rem;color:var(--cream-dim);margin:0}
+
+[id]{scroll-margin-top:84px}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -513,74 +544,141 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 <section class="wrap hero">
   <div class="eyebrow fade">Клуб</div>
   <h1 class="room-name fade">Что внутри</h1>
-  <p class="room-full fade">Место, где ты работаешь над игрой. Разборы, материалы, обратная связь и окружение игроков, которые относятся к покеру серьёзно.</p>
+  <p class="room-full fade">Место, где ты работаешь над игрой. Тренировки, разборы, материалы и окружение игроков, которые относятся к покеру серьёзно.</p>
+</section>
+
+<section class="wrap h-sec">
+  <h2 class="h-title rv">Что происходит внутри</h2>
+  <div class="gets">
+    <div class="get rv">
+      <h3>Тренировки</h3>
+      <p>Регулярные живые тренировки с разбором игры и отдельные тренировки по темам. Всё идёт в запись, пропустил — посмотришь.</p>
+    </div>
+    <div class="get rv">
+      <h3>Работа над игрой</h3>
+      <p>Закрытые стримы работы над игрой, разборы финальных столов и разбор баз игроков комьюнити.</p>
+    </div>
+    <div class="get rv">
+      <h3>Библиотека</h3>
+      <p>Видео по основам, материалы и записи всех тренировок. Доступ открыт всё время, пока действует подписка.</p>
+    </div>
+  </div>
 </section>
 
 <section class="h-band">
   <div class="wrap">
-    <h2 class="h-title rv">Открытая часть</h2>
-    <div class="tier-price">Входит за регистрацию в руме</div>
-    <p class="h-body rv">Открывается всем, кто зарегистрировался в румах через EQLBM.CLUB. Отдельной платы нет, если ты играешь в этих румах.</p>
-    <ul class="ticks">
-<li>Разборы раздач, сессий игроков в общем канале</li><li>Чат с регулярами, где можно задать вопрос и получить ответ по делу</li><li>Гайды по рабочему процессу</li><li>Закрытые стримы работы над игрой от регов</li>    </ul>
-    <div class="btn-pair" style="margin-top:1.8rem">
-      <a class="cta cta-inline" href="/rooms/">Выбрать рум</a>
-      <a class="cta cta-inline cta-ghost" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать в телеграм</a>
+    <h2 class="h-title rv">Почему это не фонд</h2>
+    <p class="h-body rv">Фонд тоже даёт обучение — но берёт за него половину твоего профита и право решать, где и как ты играешь.</p>
+    <div class="vs">
+      <div class="vs-col vs-no rv">
+        <div class="vs-head">Фонд</div>
+        <ul>
+          <li>Даёт обучение</li>
+          <li>Ставит лимиты и расписание</li>
+          <li>Играешь на чужие деньги</li>
+          <li>Уходишь с половиной профита</li>
+          <li>Постоянные аудиты и отчёты</li>
+        </ul>
+      </div>
+      <div class="vs-col vs-yes rv">
+        <div class="vs-head">EQLBM.CLUB</div>
+        <ul>
+          <li>Даёт обучение</li>
+          <li>Лимиты и график выбираешь сам</li>
+          <li>Банкролл твой</li>
+          <li>Уходишь со всем, что заработал</li>
+          <li>Никакой отчётности</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="wrap h-sec" id="pay">
-    <h2 class="h-title rv">Платные уровни</h2>
-    <p class="h-body rv">Фиксированная подписка вместо доли в профите. Уходишь — забираешь всё, что заработал, и всё, чему научился.</p>
+  <h2 class="h-title rv">Три варианта подписки</h2>
+  <p class="h-body rv">Оплата в USDT через бота. Выбери срок — цена пересчитается.</p>
 
-    <div class="per" id="periods">
-      <button type="button" class="is-on" data-p="1" data-d="0">1 месяц</button>
-      <button type="button" data-p="3" data-d="10">3 месяца <span class="off">−10%</span></button>
-      <button type="button" data-p="6" data-d="17">6 месяцев <span class="off">−17%</span></button>
-      <button type="button" data-p="12" data-d="20">12 месяцев <span class="off">−20%</span></button>
+  <div class="per" id="periods">
+    <button type="button" class="is-on" data-p="1" data-d="0">1 месяц</button>
+    <button type="button" data-p="3" data-d="10">3 месяца <span class="off">−10%</span></button>
+    <button type="button" data-p="6" data-d="17">6 месяцев <span class="off">−17%</span></button>
+    <button type="button" data-p="12" data-d="20">12 месяцев <span class="off">−20%</span></button>
+  </div>
+
+  <div class="tiers">
+    <div class="tier rv">
+      <div class="tier-nm">Base</div>
+      <div class="tier-for">Если только выстраиваешь свою игру и учишься сам.</div>
+      <div class="tier-pr"><b id="b-mo">$35</b><span>в месяц</span></div>
+      <div class="tier-next" id="b-total"><i>оплата помесячно</i></div>
+      <ul class="ticks">
+        <li>Чат комьюнити</li>
+        <li>Видео по основам покера</li>
+        <li>1 тренировка в неделю</li>
+        <li>Видеозаписи всех тренировок</li>
+        <li>Полезные материалы</li>
+      </ul>
+      <a class="cta" id="b-cta" href="https://t.me/EQLBMBOT?start=pay_base_1" target="_blank" rel="noopener">Оформить Base</a>
     </div>
 
-    <div class="vs">
-      <div class="vs-col pay rv">
-        <div class="vs-head vs-tier">Standard</div>
-        <div class="price-mo"><b id="s-mo">$150</b><span>в месяц</span></div>
-        <div class="price-total" id="s-total">Оплата помесячно</div>
-        <ul class="ticks">
-          <li>Всё из открытой части</li>
-          <li>Закрытые каналы с материалами</li>
-          <li>Регулярные тренировки в Discord</li>
-          <li>Доступ к серверу для расчётов за баллы, начисляемые за игру в румах</li>
-        </ul>
-        <a class="cta" id="s-cta" href="https://t.me/EQLBMBOT?start=pay_standard_1" target="_blank" rel="noopener">Оформить Standard</a>
-      </div>
-      <div class="vs-col pay rv">
-        <div class="vs-head vs-tier">VIP</div>
-        <div class="price-mo"><b id="v-mo">$500</b><span>в месяц</span></div>
-        <div class="price-total" id="v-total">Оплата помесячно</div>
-        <ul class="ticks">
-          <li>Всё из Standard</li>
-          <li>Работа со мной напрямую в малой группе</li>
-          <li>Сервер для расчётов без ограничений</li>
-          <li>Разбор финальных столов, ресёрчей и стратегии на дистанции</li>
-        </ul>
-        <a class="cta cta-ghost" id="v-cta" href="https://t.me/EQLBMBOT?start=pay_vip_1" target="_blank" rel="noopener">Оформить VIP</a>
-      </div>
+    <div class="tier rv">
+      <div class="tier-nm">Pro</div>
+      <div class="tier-for">Если играешь регулярно и работаешь над игрой всерьёз.</div>
+      <div class="tier-pr"><b id="p-mo">$100</b><span>в месяц</span></div>
+      <div class="tier-next" id="p-total"><i>оплата помесячно</i></div>
+      <ul class="ticks">
+        <li>Всё из Base</li>
+        <li>Закрытые стримы работы над игрой</li>
+        <li>Тематические тренировки</li>
+        <li>Разбор баз игроков до аби30 из комьюнити</li>
+        <li>Полезные материалы для PRO</li>
+      </ul>
+      <a class="cta" id="p-cta" href="https://t.me/EQLBMBOT?start=pay_pro_1" target="_blank" rel="noopener">Оформить Pro</a>
     </div>
 
-    <div class="callout pay-note">
-      <p>Оплата в USDT. Кнопка открывает бота — он выдаст адрес, примет платёж и откроет доступ в Discord в тот же день.</p>
-      <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+    <div class="tier is-vip rv">
+      <div class="tier-nm">VIP</div>
+      <div class="tier-for">Если хочешь работать со мной напрямую.</div>
+      <div class="tier-pr"><b id="v-mo">$500</b><span>в месяц</span></div>
+      <div class="tier-next" id="v-total"><i>оплата помесячно</i></div>
+      <ul class="ticks">
+        <li>Всё из Pro</li>
+        <li>Разбор базы</li>
+        <li>Разбор записи лайв-игры</li>
+        <li>1 час с психологом</li>
+        <li>1 час с коучем</li>
+        <li>Постоянная связь и поддержка</li>
+        <li>Контроль базы</li>
+        <li>Сервер для расчётов</li>
+      </ul>
+      <a class="cta cta-ghost" id="v-cta" href="https://t.me/EQLBMBOT?start=pay_vip_1" target="_blank" rel="noopener">Оформить VIP</a>
     </div>
-    <p class="pay-ask">Вопросы до оплаты — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
-  </section>
-  <section class="h-band">
+  </div>
+
+  <div class="callout tier-note rv">
+    <p>Первый набор открыт. Цена фиксируется за тобой навсегда — следующий набор после 9 сентября будет дороже.</p>
+    <p>Уходишь — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, пересчитаем по обычной цене за прожитое и вернём всё, что осталось. Мы можем завершить сотрудничество так же, со своей стороны.</p>
+  </div>
+
+  <div class="callout pay-note rv">
+    <p>Кнопка открывает бота — он выдаст адрес для оплаты и откроет доступ в Discord в тот же день.</p>
+    <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+  </div>
+  <p class="pay-ask">Вопросы до оплаты — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
+</section>
+
+<section class="h-band">
   <div class="wrap">
     <h2 class="h-title rv">Сервер для расчётов</h2>
-    <p class="h-body rv">Общий удалённый сервер с покерным софтом. Считать может один человек за раз, поэтому доступ разбирается в очереди в Discord: заходишь — пишешь, на сколько занял, выходишь — освобождаешь.</p>
+    <p class="h-body rv">Общий удалённый сервер с покерным софтом, входит в VIP. Считать может один человек за раз, поэтому доступ разбирается в очереди в Discord: заходишь — пишешь, на сколько занял, выходишь — освобождаешь.</p>
   </div>
 </section>
 
+<section class="wrap h-sec">
+  <h2 class="h-title rv">Играешь и так?</h2>
+  <p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + доступ в общий чат комьюнити. Подписка для этого не нужна.</p>
+  <a class="cta cta-inline" href="/rooms/">Выбрать рум</a>
+</section>
 
 <script>
 (function(){
@@ -632,7 +730,8 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 })();
 </script><script>
 (function(){
-  var base = { standard: 150, vip: 500 };
+  var base = { b: 35, p: 100, v: 500 };
+  var slug = { b: 'base', p: 'pro', v: 'vip' };
   var box = document.getElementById('periods');
   if (!box) return;
   var btns = box.querySelectorAll('button');
@@ -641,14 +740,14 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 
   function apply(months, off){
     btns.forEach(function(b){ b.classList.toggle('is-on', b.dataset.p === String(months)); });
-    [['s','standard'],['v','vip']].forEach(function(t){
-      var mo = Math.round(base[t[1]] * (1 - off / 100));
-      document.getElementById(t[0] + '-mo').textContent = money(mo);
-      document.getElementById(t[0] + '-total').textContent = months === 1
-        ? 'Оплата помесячно'
-        : money(mo * months) + ' за ' + months + ' мес · экономия ' + money(base[t[1]] * months - mo * months);
-      document.getElementById(t[0] + '-cta').href =
-        'https://t.me/EQLBMBOT?start=pay_' + t[1] + '_' + months;
+    Object.keys(base).forEach(function(k){
+      var mo = Math.round(base[k] * (1 - off / 100));
+      document.getElementById(k + '-mo').textContent = money(mo);
+      document.getElementById(k + '-total').innerHTML = months === 1
+        ? '<i>оплата помесячно</i>'
+        : '<i>' + months + ' мес</i><b>' + money(mo * months) + '</b>';
+      document.getElementById(k + '-cta').href =
+        'https://t.me/EQLBMBOT?start=pay_' + slug[k] + '_' + months;
     });
   }
 
