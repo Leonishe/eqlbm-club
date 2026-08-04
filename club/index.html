@@ -57,6 +57,42 @@ body{
 .back{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s}
 .back:hover,.back:focus-visible{color:var(--violet-soft)}
 
+/* ---------- навигация в шапке ---------- */
+.nav{display:flex;align-items:center;gap:clamp(.95rem,3vw,1.7rem)}
+.nav a{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{color:var(--violet-soft)}
+.nav a.is-here{color:var(--cream)}
+@media(max-width:619px){.nav{gap:.85rem}.nav a{font-size:.68rem;letter-spacing:.1em}}
+
+/* ---------- кнопка в карточке лестницы ---------- */
+.rung .cta{width:100%;margin-top:.3rem;padding:.82rem 1rem;font-size:.72rem;letter-spacing:.11em}
+
+/* ---------- выбор срока подписки ---------- */
+.per{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.6rem,4vw,2.2rem) 0 1.3rem}
+.per button{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--cream-dim);background:none;border:1px solid var(--line);border-radius:var(--r);
+  padding:.6rem .85rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+}
+.per button:hover{color:var(--violet-soft);border-color:var(--violet)}
+.per button .off{color:var(--amber);transition:color .2s}
+.per button.is-on{background:var(--violet);border-color:var(--violet);color:var(--ink)}
+.per button.is-on .off{color:var(--ink)}
+
+/* ---------- карточка тарифа ---------- */
+.vs-col.pay{display:flex;flex-direction:column}
+.pay .ticks{flex:1}
+.price-mo{display:flex;align-items:baseline;gap:.5rem;margin-top:1rem}
+.price-mo b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.4rem;line-height:1}
+.price-mo span{color:var(--cream-dim);font-size:.85rem}
+.price-total{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.6rem;min-height:1.15rem}
+.pay .cta{margin-top:1.5rem}
+.pay-note{margin-top:1.4rem}
+.pay-ask{font-size:.88rem;color:var(--cream-dim);margin-top:1.1rem}
+.pay-ask a{color:var(--violet-soft);text-decoration:none;border-bottom:1px solid rgba(139,92,246,.45)}
+.pay-ask a:hover,.pay-ask a:focus-visible{color:var(--cream);border-bottom-color:var(--cream)}
+
+
 /* ---------- hero ---------- */
 .hero{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.6rem,4vw,2.4rem);position:relative;overflow:hidden}
 .h-hero::before,.hero::before{
@@ -445,6 +481,20 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   .room-strip a img{width:42px;height:42px}
   .room-strip a::after{display:none}
 }
+
+
+/* ---------- контент виден сразу, без появления по скроллу ---------- */
+.rv,.rv.is-in{opacity:1;transform:none;transition:none}
+body{animation:eq-pagein .55s ease both}
+@keyframes eq-pagein{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){body{animation:none}}
+
+/* ---------- заметная полоса прокрутки ---------- */
+html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:#3a332c;border-radius:6px;border:3px solid var(--ink)}
+::-webkit-scrollbar-thumb:hover{background:#5a5048}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -453,7 +503,10 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 <header class="top">
   <div class="wrap">
     <a class="mark" href="/">EQLBM<span>.</span>CLUB</a>
-    <a class="back" href="/">← На главную</a>
+    <nav class="nav">
+      <a href="/rooms/">Румы</a>
+      <a href="/club/" class="is-here">Клуб</a>
+    </nav>
   </div>
 </header>
 
@@ -477,27 +530,51 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   </div>
 </section>
 
-<section class="wrap h-sec">
-  <h2 class="h-title rv">Платные уровни</h2>
-  <p class="h-body rv">Фиксированная подписка вместо доли в профите. Уходишь — забираешь всё, что заработал, и всё, чему научился.</p>
-  <div class="vs">
-    <div class="vs-col rv">
-      <div class="vs-head vs-tier">Standard</div>
-      <div class="tier-price">$150 в месяц</div>
-      <ul class="ticks">
-<li>Всё из открытой части</li><li>Закрытые каналы с материалами</li><li>Регулярные тренировки в Discord</li><li>Доступ к серверу для расчётов за баллы, начисляемые за игру в румах</li>      </ul>
-    </div>
-    <div class="vs-col rv">
-      <div class="vs-head vs-tier">VIP</div>
-      <div class="tier-price">$500 в месяц</div>
-      <ul class="ticks">
-<li>Всё из Standard</li><li>Работа со мной напрямую в малой группе</li><li>Сервер для расчётов без ограничений</li><li>Разбор финальных столов, ресёрчей и стратегии на дистанции</li>      </ul>
-    </div>
-  </div>
-  <a class="cta cta-inline" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать мне в телеграм</a>
-</section>
+<section class="wrap h-sec" id="pay">
+    <h2 class="h-title rv">Платные уровни</h2>
+    <p class="h-body rv">Фиксированная подписка вместо доли в профите. Уходишь — забираешь всё, что заработал, и всё, чему научился.</p>
 
-<section class="h-band">
+    <div class="per" id="periods">
+      <button type="button" class="is-on" data-p="1" data-d="0">1 месяц</button>
+      <button type="button" data-p="3" data-d="10">3 месяца <span class="off">−10%</span></button>
+      <button type="button" data-p="6" data-d="17">6 месяцев <span class="off">−17%</span></button>
+      <button type="button" data-p="12" data-d="20">12 месяцев <span class="off">−20%</span></button>
+    </div>
+
+    <div class="vs">
+      <div class="vs-col pay rv">
+        <div class="vs-head vs-tier">Standard</div>
+        <div class="price-mo"><b id="s-mo">$150</b><span>в месяц</span></div>
+        <div class="price-total" id="s-total">Оплата помесячно</div>
+        <ul class="ticks">
+          <li>Всё из открытой части</li>
+          <li>Закрытые каналы с материалами</li>
+          <li>Регулярные тренировки в Discord</li>
+          <li>Доступ к серверу для расчётов за баллы, начисляемые за игру в румах</li>
+        </ul>
+        <a class="cta" id="s-cta" href="https://t.me/EQLBMBOT?start=pay_standard_1" target="_blank" rel="noopener">Оформить Standard</a>
+      </div>
+      <div class="vs-col pay rv">
+        <div class="vs-head vs-tier">VIP</div>
+        <div class="price-mo"><b id="v-mo">$500</b><span>в месяц</span></div>
+        <div class="price-total" id="v-total">Оплата помесячно</div>
+        <ul class="ticks">
+          <li>Всё из Standard</li>
+          <li>Работа со мной напрямую в малой группе</li>
+          <li>Сервер для расчётов без ограничений</li>
+          <li>Разбор финальных столов, ресёрчей и стратегии на дистанции</li>
+        </ul>
+        <a class="cta cta-ghost" id="v-cta" href="https://t.me/EQLBMBOT?start=pay_vip_1" target="_blank" rel="noopener">Оформить VIP</a>
+      </div>
+    </div>
+
+    <div class="callout pay-note">
+      <p>Оплата в USDT. Кнопка открывает бота — он выдаст адрес, примет платёж и откроет доступ в Discord в тот же день.</p>
+      <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+    </div>
+    <p class="pay-ask">Вопросы до оплаты — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
+  </section>
+  <section class="h-band">
   <div class="wrap">
     <h2 class="h-title rv">Сервер для расчётов</h2>
     <p class="h-body rv">Общий удалённый сервер с покерным софтом. Считать может один человек за раз, поэтому доступ разбирается в очереди в Discord: заходишь — пишешь, на сколько занял, выходишь — освобождаешь.</p>
@@ -553,5 +630,32 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
     }
   }
 })();
-</script></body>
+</script><script>
+(function(){
+  var base = { standard: 150, vip: 500 };
+  var box = document.getElementById('periods');
+  if (!box) return;
+  var btns = box.querySelectorAll('button');
+
+  function money(n){ return '$' + n.toLocaleString('en-US'); }
+
+  function apply(months, off){
+    btns.forEach(function(b){ b.classList.toggle('is-on', b.dataset.p === String(months)); });
+    [['s','standard'],['v','vip']].forEach(function(t){
+      var mo = Math.round(base[t[1]] * (1 - off / 100));
+      document.getElementById(t[0] + '-mo').textContent = money(mo);
+      document.getElementById(t[0] + '-total').textContent = months === 1
+        ? 'Оплата помесячно'
+        : money(mo * months) + ' за ' + months + ' мес · экономия ' + money(base[t[1]] * months - mo * months);
+      document.getElementById(t[0] + '-cta').href =
+        'https://t.me/EQLBMBOT?start=pay_' + t[1] + '_' + months;
+    });
+  }
+
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ apply(+b.dataset.p, +b.dataset.d); });
+  });
+})();
+</script>
+</body>
 </html>

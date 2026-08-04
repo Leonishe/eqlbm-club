@@ -57,6 +57,75 @@ body{
 .back{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s}
 .back:hover,.back:focus-visible{color:var(--violet-soft)}
 
+/* ---------- навигация в шапке ---------- */
+.nav{display:flex;align-items:center;gap:clamp(.95rem,3vw,1.7rem)}
+.nav a{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{color:var(--violet-soft)}
+.nav a.is-here{color:var(--cream)}
+@media(max-width:619px){.nav{gap:.85rem}.nav a{font-size:.68rem;letter-spacing:.1em}}
+
+/* ---------- кнопка в карточке лестницы ---------- */
+.rung .cta{width:100%;margin-top:.3rem;padding:.82rem 1rem;font-size:.72rem;letter-spacing:.11em}
+
+/* ---------- выбор срока подписки ---------- */
+.per{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.6rem,4vw,2.2rem) 0 1.3rem}
+.per button{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--cream-dim);background:none;border:1px solid var(--line);border-radius:var(--r);
+  padding:.6rem .85rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+}
+.per button:hover{color:var(--violet-soft);border-color:var(--violet)}
+.per button .off{color:var(--amber);transition:color .2s}
+.per button.is-on{background:var(--violet);border-color:var(--violet);color:var(--ink)}
+.per button.is-on .off{color:var(--ink)}
+
+/* ---------- карточка тарифа ---------- */
+.vs-col.pay{display:flex;flex-direction:column}
+.pay .ticks{flex:1}
+.price-mo{display:flex;align-items:baseline;gap:.5rem;margin-top:1rem}
+.price-mo b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.4rem;line-height:1}
+.price-mo span{color:var(--cream-dim);font-size:.85rem}
+.price-total{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.6rem;min-height:1.15rem}
+.pay .cta{margin-top:1.5rem}
+.pay-note{margin-top:1.4rem}
+.pay-ask{font-size:.88rem;color:var(--cream-dim);margin-top:1.1rem}
+.pay-ask a{color:var(--violet-soft);text-decoration:none;border-bottom:1px solid rgba(139,92,246,.45)}
+.pay-ask a:hover,.pay-ask a:focus-visible{color:var(--cream);border-bottom-color:var(--cream)}
+
+/* ---------- тарифы на главной ---------- */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:2rem}
+.tier{background:var(--ink);padding:1.7rem 1.4rem;display:flex;flex-direction:column}
+.tier.is-vip{background:rgba(255,255,255,.022)}
+.tier-nm{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft)}
+.tier-for{font-size:.85rem;color:var(--cream-dim);margin-top:.55rem;min-height:5.1em}
+.tier-pr{display:flex;align-items:baseline;gap:.45rem;min-height:2.7rem}
+.tier-pr b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.5rem;line-height:1}
+.tier-pr span{color:var(--cream-dim);font-size:.85rem}
+.tier-next{display:flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.5rem .7rem;border:1px solid rgba(217,164,65,.35);border-radius:5px;min-height:2.5rem}
+.tier-next i{font-style:normal;font-size:.76rem;color:var(--cream-dim)}
+.tier-next b{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1rem;color:var(--amber)}
+.tier-next.flat{border-color:var(--line)}
+.tier-next.flat i{color:#6f6a62}
+.tier .ticks{flex:1;margin-top:1.2rem}
+.tier .cta{margin-top:1.5rem;width:100%;text-align:center}
+.tier-note{margin-top:1.5rem}
+.tier-note p+p{margin-top:.5rem;color:var(--cream-dim);font-size:.88rem}
+
+/* ---------- цифры в блоке румов ---------- */
+.figs{display:flex;gap:2.2rem;flex-wrap:wrap;margin:1.5rem 0 .5rem}
+.fig b{display:block;font-family:'Montserrat',system-ui,sans-serif;font-weight:500;font-size:1.65rem;line-height:1.1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--cream)}
+.fig span{display:block;margin-top:.4rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)}
+
+/* ---------- карточки «что ты получаешь» ---------- */
+.gets{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:2rem}
+.get{background:var(--ink);padding:1.6rem 1.4rem}
+.get h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.3rem;margin:0 0 .5rem}
+.get p{font-size:.89rem;color:var(--cream-dim);margin:0}
+
+[id]{scroll-margin-top:84px}
+
+
+
 /* ---------- hero ---------- */
 .hero{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.6rem,4vw,2.4rem);position:relative;overflow:hidden}
 .h-hero::before,.hero::before{
@@ -213,7 +282,7 @@ button.cta{width:100%;border:none;cursor:pointer;font-family:'Montserrat',sans-s
 .h-band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(2.8rem,7vw,5rem) 0}
 .h-sec{padding:clamp(2.8rem,7vw,5rem) 0}
 .h-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.9rem,4.5vw,2.7rem);letter-spacing:.005em}
-.h-lead{color:var(--violet-soft);font-size:clamp(1.1rem,3vw,1.5rem);font-weight:500;margin-top:1rem;max-width:24ch;line-height:1.3}
+.h-lead{color:var(--violet-soft);font-size:clamp(1.1rem,3vw,1.5rem);font-weight:500;margin-top:1rem;max-width:24ch;line-height:1.3}.h-lead.wide{max-width:46ch;margin-top:0;font-size:clamp(1.2rem,2.6vw,1.75rem);line-height:1.4}.band3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(1.2rem,3vw,2.2rem)}.band3 div{position:relative;padding-top:1rem;border-top:1px solid var(--line);color:var(--violet-soft);font-size:clamp(1.05rem,2vw,1.3rem);font-weight:500;line-height:1.35}.band3 div::before{content:'';position:absolute;top:-1px;left:0;width:38px;height:1px;background:var(--violet)}
 .h-body{color:var(--cream-dim);font-size:.95rem;margin-top:1rem;max-width:62ch}
 
 .ladder{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(2rem,5vw,3rem)}
@@ -445,6 +514,20 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   .room-strip a img{width:42px;height:42px}
   .room-strip a::after{display:none}
 }
+
+
+/* ---------- контент виден сразу, без появления по скроллу ---------- */
+.rv,.rv.is-in{opacity:1;transform:none;transition:none}
+body{animation:eq-pagein .55s ease both}
+@keyframes eq-pagein{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){body{animation:none}}
+
+/* ---------- заметная полоса прокрутки ---------- */
+html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:#3a332c;border-radius:6px;border:3px solid var(--ink)}
+::-webkit-scrollbar-thumb:hover{background:#5a5048}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -453,75 +536,115 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 <header class="top">
   <div class="wrap">
     <a class="mark" href="/">EQLBM<span>.</span>CLUB</a>
-    <a class="back" href="/rooms/">Румы</a>
+    <nav class="nav">
+      <a href="/rooms/">Румы</a>
+      <a href="/club/">Клуб</a>
+    </nav>
   </div>
 </header>
 
 <section class="wrap h-hero">
   <img class="h-mark" src="/assets/mark.png" alt="" aria-hidden="true">
+  <p class="eyebrow fade">Покерное комьюнити · MTT</p>
   <h1 class="h-thesis fade">Безопасное пространство для развития покерной карьеры</h1>
-  <p class="h-sub fade">Комьюнити, которое помогает играть лучше. За твоё обучение платит рум. От тебя — регистрация в румах через EQLBM. Весь твой профит всегда остаётся твоим.</p>
   <div class="h-actions fade">
     <div class="btn-pair">
-      <a class="cta cta-inline" href="/rooms/">Выбрать рум</a>
-      <a class="cta cta-inline cta-ghost" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать в телеграм</a>
-    </div>
-  </div>
-</section>
-
-<section class="h-band" id="ladder">
-  <div class="wrap">
-    <h2 class="h-title rv">Как это устроено</h2>
-    <p class="h-lead rv">Ты не платишь за вход в комьюнити.</p>
-    <p class="h-body rv">За него платит покеррум возвратом комиссий нам, как твоему аффилейту. Ты получаешь обучение и дополнительный рейкбэк от нас.</p>
-
-    <div class="ladder">
-      <div class="rung rv">
-        <div class="rung-n">00</div>
-        <h3 class="rung-t">Выбор Рума</h3>
-        <p class="rung-x">Выбираешь рум и регистрируешься через EQLBM. Получаешь доступ-ссылку на ядро комьюнити в дискорде.</p>
-        <div class="rung-p">Бесплатно</div>
-        <a class="rung-a" href="/rooms/">Выбрать рум →</a>
-      </div>
-      <div class="rung rv">
-        <div class="rung-n">01</div>
-        <h3 class="rung-t">Комьюнити</h3>
-        <p class="rung-x">Постоянный контент: чат, разборы раздач, видеозаписи тренировок, закрытые стримы работы над игрой.</p>
-        <div class="rung-p">Входит в регистрацию</div>
-        <a class="rung-a" href="/club/">Что внутри →</a>
-      </div>
-      <div class="rung rv">
-        <div class="rung-n">02</div>
-        <h3 class="rung-t">Дополнительно</h3>
-        <p class="rung-x">Разбор твоей базы, доступ к софту и закрытым материалам.</p>
-        <div class="rung-p">Платная подписка</div>
-        <a class="rung-a" href="/club/">Уровни и цены →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="wrap h-sec">
-  <h2 class="h-title rv">Почему это не фонд</h2>
-  <p class="h-body rv">Фонды дают обучение, но берут за него половину твоего профита и право решать, где и как ты играешь.</p>
-  <div class="vs">
-    <div class="vs-col vs-no rv">
-      <div class="vs-head">Фонд</div>
-      <ul>
-<li>Дает обучение</li><li>Ставит лимиты и расписание</li><li>Играешь на чужие деньги</li><li>Уходишь с половиной профита</li><li>Бюрократия</li><li>Постоянные аудиты и отчёты</li>      </ul>
-    </div>
-    <div class="vs-col vs-yes rv">
-      <div class="vs-head">EQLBM.CLUB</div>
-      <ul>
-<li>Дает обучение</li><li>Лимиты и график выбираешь сам</li><li>Банкролл твой</li><li>Уходишь со всем, что заработал</li><li>Никакой отчётности</li><li>Можешь выбрать платную подписку</li>      </ul>
+      <a class="cta cta-inline" href="#tariffs">Выбрать тариф</a>
+      <a class="cta cta-inline cta-ghost" href="#inside">Что внутри</a>
     </div>
   </div>
 </section>
 
 <section class="h-band">
   <div class="wrap">
-    <h2 class="h-title rv">Румы</h2>
-    <p class="h-body rv">Регистрация в руме по нашим ссылкам имеет важное значение, однако важнее то, будешь ли ты продолжать в них играть. Выбирай с кайфом</p>
+    <div class="band3 rv"><div>Обучение как в школе покера</div><div>Оплата — месячная подписка</div><div>Весь профит ты забираешь себе</div></div>
+  </div>
+</section>
+
+<section class="wrap h-sec" id="inside">
+  <h2 class="h-title rv">Что ты получаешь</h2>
+  <div class="gets">
+    <div class="get rv">
+      <h3>Тренировки</h3>
+      <p>Регулярные живые тренировки с разбором игры и отдельные тренировки по темам.</p>
+    </div>
+    <div class="get rv">
+      <h3>Работа над игрой</h3>
+      <p>Закрытые стримы работы над игрой, разборы финальных столов, разбор баз игроков.</p>
+    </div>
+    <div class="get rv">
+      <h3>Библиотека и комьюнити</h3>
+      <p>Видеозаписи всех тренировок и все доступные материалы. Чат комьюнити.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap h-sec" id="tariffs">
+  <h2 class="h-title rv">Три варианта подписки</h2>
+  <p class="h-body rv">Оплата в USDT через бота. При оплате за 3, 6 или 12 месяцев — скидка.</p>
+
+  <div class="tiers">
+    <div class="tier rv">
+      <div class="tier-nm">Base</div>
+      <div class="tier-for">Если только выстраиваешь свою игру и учишься сам.</div>
+      <div class="tier-pr"><b>$35</b><span>в месяц</span></div>
+      <div class="tier-next"><i>с 9 сентября</i><b>$50</b></div>
+      <ul class="ticks">
+        <li>Чат комьюнити</li>
+        <li>Видео по основам покера</li>
+        <li>1 тренировка в неделю</li>
+        <li>Видеозаписи всех тренировок</li>
+        <li>Полезные материалы</li>
+      </ul>
+      <a class="cta" href="https://t.me/EQLBMBOT?start=pay_base_1" target="_blank" rel="noopener">Оформить Base</a>
+    </div>
+
+    <div class="tier rv">
+      <div class="tier-nm">Pro</div>
+      <div class="tier-for">Если играешь регулярно и работаешь над игрой всерьёз.</div>
+      <div class="tier-pr"><b>$100</b><span>в месяц</span></div>
+      <div class="tier-next"><i>с 9 сентября</i><b>$150</b></div>
+      <ul class="ticks">
+        <li>Всё из Base</li>
+        <li>Закрытые стримы работы над игрой</li>
+        <li>Тематические тренировки</li>
+        <li>Разбор баз игроков до аби30 из комьюнити</li>
+        <li>Полезные материалы для PRO</li>
+      </ul>
+      <a class="cta" href="https://t.me/EQLBMBOT?start=pay_pro_1" target="_blank" rel="noopener">Оформить Pro</a>
+    </div>
+
+    <div class="tier is-vip rv">
+      <div class="tier-nm">VIP</div>
+      <div class="tier-for">Если хочешь работать со мной напрямую.</div>
+      <div class="tier-pr"><b>$500</b><span>в месяц</span></div>
+      <div class="tier-next flat"><i>цена не меняется</i></div>
+      <ul class="ticks">
+        <li>Всё из Pro</li>
+        <li>Разбор базы</li>
+        <li>Разбор записи лайв-игры</li>
+        <li>1 час с психологом</li>
+        <li>1 час с коучем</li>
+        <li>Постоянная связь и поддержка</li>
+        <li>Контроль базы</li>
+        <li>Сервер для расчётов</li>
+      </ul>
+      <a class="cta cta-ghost" href="https://t.me/EQLBMBOT?start=pay_vip_1" target="_blank" rel="noopener">Оформить VIP</a>
+    </div>
+  </div>
+
+  <div class="callout tier-note rv">
+    <p>Первый набор открыт. Цена фиксируется за тобой навсегда — следующий набор после 9 сентября будет дороже.</p>
+    <p>Уходишь — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, пересчитаем по обычной цене за прожитое и вернём всё, что осталось. Мы можем завершить сотрудничество так же, со своей стороны.</p>
+  </div>
+</section>
+
+<section class="h-band">
+  <div class="wrap">
+    <p class="eyebrow rv">Аффилейт-программа</p>
+<h2 class="h-title rv">Румы, в которых мы играем</h2>
+<p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + доступ в общий чат комьюнити.</p>
+<div class="figs rv"><div class="fig"><b>14</b><span>румов</span></div><div class="fig"><b>до 80%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата в месяц</span></div></div>
     <div class="room-strip rv">
 <a href="/rooms/coinpoker/" data-name="CoinPoker" aria-label="CoinPoker"><img src="/assets/rooms/coinpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/truepoker/" data-name="TruePoker" aria-label="TruePoker"><img src="/assets/rooms/truepoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/champion/" data-name="Champion Poker" aria-label="Champion Poker"><img src="/assets/rooms/champion.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/betonline/" data-name="BetOnline" aria-label="BetOnline"><img src="/assets/rooms/betonline.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/yapoker/" data-name="YaPoker" aria-label="YaPoker"><img src="/assets/rooms/yapoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/blackchip/" data-name="BlackChipPoker" aria-label="BlackChipPoker"><img src="/assets/rooms/blackchip.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/acr/" data-name="ACR" aria-label="ACR"><img src="/assets/rooms/acr.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerking/" data-name="PokerKing" aria-label="PokerKing"><img src="/assets/rooms/pokerking.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/sportsbetting/" data-name="SportsBetting.ag" aria-label="SportsBetting.ag"><img src="/assets/rooms/sportsbetting.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/tigergaming/" data-name="TigerGaming" aria-label="TigerGaming"><img src="/assets/rooms/tigergaming.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/bcpoker/" data-name="BCPoker" aria-label="BCPoker"><img src="/assets/rooms/bcpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerdom/" data-name="PokerDom" aria-label="PokerDom"><img src="/assets/rooms/pokerdom.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/rptbet/" data-name="RPTBet" aria-label="RPTBet"><img src="/assets/rooms/rptbet.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/nexa/" data-name="NexaPoker" aria-label="NexaPoker"><img src="/assets/rooms/nexa.png" alt="" width="48" height="48" loading="lazy"></a>    </div>
     <a class="cta cta-inline" href="/rooms/">Все румы</a>
@@ -530,8 +653,8 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 <section class="wrap h-sec h-about">
   <div class="ab-text rv">
-    <h2 class="h-title">Кто за этим стоит</h2>
-    <p class="h-body">Леонид Бочков. Играю в покер с 2009 года. На данный момент рег MTT ABI200, состою в команде Алексея Понякова. Тренирую игроков до ABI100. За плечами тренерская работа и успешная карьера покерного профессионала.</p>
+    <h2 class="h-title">Леонид «Leonishe» Бочков</h2>
+<p class="h-body">Играю MTT с 2009 года, в данный момент abi200, в команде у Алексея Понякова. Тренирую игроков и сам продолжаю играть. Всё, что я показываю в клубе, я применяю в своей стратегии.</p>
     <a class="cta cta-inline ab-cta" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать мне в телеграм</a>
   </div>
   <div class="ab-fade rv" data-interval="5000">

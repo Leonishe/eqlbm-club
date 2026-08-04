@@ -57,6 +57,42 @@ body{
 .back{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s}
 .back:hover,.back:focus-visible{color:var(--violet-soft)}
 
+/* ---------- навигация в шапке ---------- */
+.nav{display:flex;align-items:center;gap:clamp(.95rem,3vw,1.7rem)}
+.nav a{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .2s;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{color:var(--violet-soft)}
+.nav a.is-here{color:var(--cream)}
+@media(max-width:619px){.nav{gap:.85rem}.nav a{font-size:.68rem;letter-spacing:.1em}}
+
+/* ---------- кнопка в карточке лестницы ---------- */
+.rung .cta{width:100%;margin-top:.3rem;padding:.82rem 1rem;font-size:.72rem;letter-spacing:.11em}
+
+/* ---------- выбор срока подписки ---------- */
+.per{display:flex;flex-wrap:wrap;gap:.5rem;margin:clamp(1.6rem,4vw,2.2rem) 0 1.3rem}
+.per button{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--cream-dim);background:none;border:1px solid var(--line);border-radius:var(--r);
+  padding:.6rem .85rem;cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+}
+.per button:hover{color:var(--violet-soft);border-color:var(--violet)}
+.per button .off{color:var(--amber);transition:color .2s}
+.per button.is-on{background:var(--violet);border-color:var(--violet);color:var(--ink)}
+.per button.is-on .off{color:var(--ink)}
+
+/* ---------- карточка тарифа ---------- */
+.vs-col.pay{display:flex;flex-direction:column}
+.pay .ticks{flex:1}
+.price-mo{display:flex;align-items:baseline;gap:.5rem;margin-top:1rem}
+.price-mo b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.4rem;line-height:1}
+.price-mo span{color:var(--cream-dim);font-size:.85rem}
+.price-total{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.6rem;min-height:1.15rem}
+.pay .cta{margin-top:1.5rem}
+.pay-note{margin-top:1.4rem}
+.pay-ask{font-size:.88rem;color:var(--cream-dim);margin-top:1.1rem}
+.pay-ask a{color:var(--violet-soft);text-decoration:none;border-bottom:1px solid rgba(139,92,246,.45)}
+.pay-ask a:hover,.pay-ask a:focus-visible{color:var(--cream);border-bottom-color:var(--cream)}
+
+
 /* ---------- hero ---------- */
 .hero{padding:clamp(2.6rem,7vw,5rem) 0 clamp(1.6rem,4vw,2.4rem);position:relative;overflow:hidden}
 .h-hero::before,.hero::before{
@@ -445,6 +481,20 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
   .room-strip a img{width:42px;height:42px}
   .room-strip a::after{display:none}
 }
+
+
+/* ---------- контент виден сразу, без появления по скроллу ---------- */
+.rv,.rv.is-in{opacity:1;transform:none;transition:none}
+body{animation:eq-pagein .55s ease both}
+@keyframes eq-pagein{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){body{animation:none}}
+
+/* ---------- заметная полоса прокрутки ---------- */
+html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:#3a332c;border-radius:6px;border:3px solid var(--ink)}
+::-webkit-scrollbar-thumb:hover{background:#5a5048}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -453,7 +503,10 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 <header class="top">
   <div class="wrap">
     <a class="mark" href="/">EQLBM<span>.</span>CLUB</a>
-    <a class="back" href="/">← На главную</a>
+    <nav class="nav">
+      <a href="/rooms/" class="is-here">Румы</a>
+      <a href="/club/">Клуб</a>
+    </nav>
   </div>
 </header>
 
