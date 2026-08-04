@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EQLBM.CLUB — Безопасное пространство для развития покерной карьеры</title>
-<meta name="description" content="Комьюнити, которое помогает играть лучше. За твоё обучение платит рум. От тебя — регистрация в румах через EQLBM. Весь твой профит всегда остаётся твоим.">
+<meta name="description" content="Обучение как в школе покера: тренировки по темам, разбор твоей игры и стримы работы над игрой. Оплата — месячная подписка, весь профит ты забираешь себе.">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EQLBM.CLUB">
 <meta property="og:title" content="EQLBM.CLUB — Безопасное пространство для развития покерной карьеры">
-<meta property="og:description" content="Комьюнити, которое помогает играть лучше. За твоё обучение платит рум. От тебя — регистрация в румах через EQLBM. Весь твой профит всегда остаётся твоим.">
+<meta property="og:description" content="Обучение как в школе покера: тренировки по темам, разбор твоей игры и стримы работы над игрой. Оплата — месячная подписка, весь профит ты забираешь себе.">
 <meta property="og:image" content="https://eqlbm.club/assets/og.png">
 <meta property="og:url" content="https://eqlbm.club/">
 <meta property="og:locale" content="ru_RU">
@@ -528,6 +528,13 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 ::-webkit-scrollbar-track{background:var(--ink)}
 ::-webkit-scrollbar-thumb{background:#3a332c;border-radius:6px;border:3px solid var(--ink)}
 ::-webkit-scrollbar-thumb:hover{background:#5a5048}
+
+/* ---------- воздух под последним блоком (панель браузера на телефоне) ---------- */
+body{padding-bottom:clamp(2.5rem,8vw,4rem)}
+@media(max-width:700px){body{padding-bottom:6rem}}
+/* коробка без скидки не должна выглядеть пустым полем ввода */
+.tier-next.flat,.tier-next.plain{border-color:var(--line)}
+.tier-next.plain i{color:#6f6a62}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>

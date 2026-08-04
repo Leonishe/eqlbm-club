@@ -526,6 +526,13 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 .get p{font-size:.89rem;color:var(--cream-dim);margin:0}
 
 [id]{scroll-margin-top:84px}
+
+/* ---------- воздух под последним блоком (панель браузера на телефоне) ---------- */
+body{padding-bottom:clamp(2.5rem,8vw,4rem)}
+@media(max-width:700px){body{padding-bottom:6rem}}
+/* коробка без скидки не должна выглядеть пустым полем ввода */
+.tier-next.flat,.tier-next.plain{border-color:var(--line)}
+.tier-next.plain i{color:#6f6a62}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -609,7 +616,7 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
       <div class="tier-nm">Base</div>
       <div class="tier-for">Если только выстраиваешь свою игру и учишься сам.</div>
       <div class="tier-pr"><b id="b-mo">$35</b><span>в месяц</span></div>
-      <div class="tier-next" id="b-total"><i>оплата помесячно</i></div>
+      <div class="tier-next plain" id="b-total"><i>оплата помесячно</i></div>
       <ul class="ticks">
         <li>Чат комьюнити</li>
         <li>Видео по основам покера</li>
@@ -624,7 +631,7 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
       <div class="tier-nm">Pro</div>
       <div class="tier-for">Если играешь регулярно и работаешь над игрой всерьёз.</div>
       <div class="tier-pr"><b id="p-mo">$100</b><span>в месяц</span></div>
-      <div class="tier-next" id="p-total"><i>оплата помесячно</i></div>
+      <div class="tier-next plain" id="p-total"><i>оплата помесячно</i></div>
       <ul class="ticks">
         <li>Всё из Base</li>
         <li>Закрытые стримы работы над игрой</li>
@@ -639,7 +646,7 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
       <div class="tier-nm">VIP</div>
       <div class="tier-for">Если хочешь работать со мной напрямую.</div>
       <div class="tier-pr"><b id="v-mo">$500</b><span>в месяц</span></div>
-      <div class="tier-next" id="v-total"><i>оплата помесячно</i></div>
+      <div class="tier-next plain" id="v-total"><i>оплата помесячно</i></div>
       <ul class="ticks">
         <li>Всё из Pro</li>
         <li>Разбор базы</li>
@@ -742,7 +749,9 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
     Object.keys(base).forEach(function(k){
       var mo = Math.round(base[k] * (1 - off / 100));
       document.getElementById(k + '-mo').textContent = money(mo);
-      document.getElementById(k + '-total').innerHTML = months === 1
+      var box = document.getElementById(k + '-total');
+      box.classList.toggle('plain', months === 1);
+      box.innerHTML = months === 1
         ? '<i>оплата помесячно</i>'
         : '<i>' + months + ' мес</i><b>' + money(mo * months) + '</b>';
       document.getElementById(k + '-cta').href =

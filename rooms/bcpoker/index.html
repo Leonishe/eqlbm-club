@@ -495,6 +495,13 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 ::-webkit-scrollbar-track{background:var(--ink)}
 ::-webkit-scrollbar-thumb{background:#3a332c;border-radius:6px;border:3px solid var(--ink)}
 ::-webkit-scrollbar-thumb:hover{background:#5a5048}
+
+/* ---------- воздух под последним блоком (панель браузера на телефоне) ---------- */
+body{padding-bottom:clamp(2.5rem,8vw,4rem)}
+@media(max-width:700px){body{padding-bottom:6rem}}
+/* коробка без скидки не должна выглядеть пустым полем ввода */
+.tier-next.flat,.tier-next.plain{border-color:var(--line)}
+.tier-next.plain i{color:#6f6a62}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
