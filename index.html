@@ -97,7 +97,7 @@ body{
 .tier{background:var(--ink);padding:1.7rem 1.4rem;display:flex;flex-direction:column}
 .tier.is-vip{background:rgba(255,255,255,.022)}
 .tier-nm{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft)}
-.tier-for{font-size:.85rem;color:var(--cream-dim);margin-top:.55rem;min-height:5.1em}
+.tier-for{font-size:.92rem;color:var(--cream)}
 .tier-pr{display:flex;align-items:baseline;gap:.45rem;min-height:2.7rem}
 .tier-pr b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.5rem;line-height:1}
 .tier-pr span{color:var(--cream-dim);font-size:.85rem}
@@ -538,6 +538,19 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 
 /* ---------- воздух по краям на телефоне ---------- */
 :root{--sp:clamp(1.5rem,3.2vw,2.2rem)}
+
+.tier-for{height:auto;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.tier-for i{display:block;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft);margin-bottom:.45rem}
+
+/* ---------- код прямо в липкой шапке ---------- */
+.sb-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.sb-code{font-family:'IBM Plex Mono',monospace;font-size:1rem;letter-spacing:.04em;color:var(--violet-soft);white-space:nowrap}
+@media(max-width:619px){
+  .sb-name{display:none}
+  .sb-code{font-size:.95rem}
+}
+/* ---------- отступ по краям задаём напрямую, без переменной ---------- */
+.wrap{padding-left:max(1.5rem,var(--sp));padding-right:max(1.5rem,var(--sp))}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -596,7 +609,6 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <div class="tiers">
     <div class="tier rv">
       <div class="tier-nm">Base</div>
-      <div class="tier-for">Если только выстраиваешь свою игру и учишься сам.</div>
       <div class="tier-pr"><b>$35</b><span>в месяц</span></div>
       <div class="tier-next"><i>с 9 сентября</i><b>$50</b></div>
       <ul class="ticks">
@@ -606,27 +618,27 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
         <li>Видеозаписи всех тренировок</li>
         <li>Полезные материалы</li>
       </ul>
+      <div class="tier-for"><i>Кому подходит</i>Начинающим игрокам до аби10</div>
       <a class="cta" href="https://t.me/EQLBMBOT?start=pay_base_1" target="_blank" rel="noopener">Оформить Base</a>
     </div>
 
     <div class="tier rv">
       <div class="tier-nm">Pro</div>
-      <div class="tier-for">Если играешь регулярно и работаешь над игрой всерьёз.</div>
       <div class="tier-pr"><b>$100</b><span>в месяц</span></div>
       <div class="tier-next"><i>с 9 сентября</i><b>$150</b></div>
       <ul class="ticks">
         <li>Всё из Base</li>
         <li>Закрытые стримы работы над игрой</li>
         <li>Тематические тренировки</li>
-        <li>Разбор баз игроков до аби30 из комьюнити</li>
+        <li>Разбор баз игроков от аби10 до аби50 из комьюнити</li>
         <li>Полезные материалы для PRO</li>
       </ul>
+      <div class="tier-for"><i>Кому подходит</i>Игрокам до аби50</div>
       <a class="cta" href="https://t.me/EQLBMBOT?start=pay_pro_1" target="_blank" rel="noopener">Оформить Pro</a>
     </div>
 
     <div class="tier is-vip rv">
       <div class="tier-nm">VIP</div>
-      <div class="tier-for">Если хочешь работать со мной напрямую.</div>
       <div class="tier-pr"><b>$500</b><span>в месяц</span></div>
       <div class="tier-next flat"><i>цена не меняется</i></div>
       <ul class="ticks">

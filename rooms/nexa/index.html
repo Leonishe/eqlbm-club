@@ -507,6 +507,16 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 
 /* ---------- воздух по краям на телефоне ---------- */
 :root{--sp:clamp(1.5rem,3.2vw,2.2rem)}
+
+/* ---------- код прямо в липкой шапке ---------- */
+.sb-right{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.sb-code{font-family:'IBM Plex Mono',monospace;font-size:1rem;letter-spacing:.04em;color:var(--violet-soft);white-space:nowrap}
+@media(max-width:619px){
+  .sb-name{display:none}
+  .sb-code{font-size:.95rem}
+}
+/* ---------- отступ по краям задаём напрямую, без переменной ---------- */
+.wrap{padding-left:max(1.5rem,var(--sp));padding-right:max(1.5rem,var(--sp))}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -525,7 +535,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 <div class="stickybar" id="stickybar" aria-hidden="true">
   <div class="wrap">
     <span class="sb-left"><img class="sb-logo" src="/assets/rooms/nexa.png" alt="" width="26" height="26"><span class="sb-name">NexaPoker</span></span>
-    <button class="copy sb-copy" type="button" data-copy="#promocode">Скопировать бонус-код</button>
+    <span class="sb-right"><span class="sb-code">pokerducks</span><button class="copy sb-copy" type="button" data-copy="#promocode">Копировать</button></span>
   </div>
 </div>
 
