@@ -502,6 +502,11 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 /* коробка без скидки не должна выглядеть пустым полем ввода */
 .tier-next.flat,.tier-next.plain{border-color:var(--line)}
 .tier-next.plain i{color:#6f6a62}
+
+@media(max-width:619px){.sb-copy[data-copy="#promocode"]{font-size:.58rem;padding:.34rem .5rem}}
+
+/* ---------- воздух по краям на телефоне ---------- */
+:root{--sp:clamp(1.5rem,3.2vw,2.2rem)}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -520,7 +525,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 <div class="stickybar" id="stickybar" aria-hidden="true">
   <div class="wrap">
     <span class="sb-left"><img class="sb-logo" src="/assets/rooms/rptbet.png" alt="" width="26" height="26"><span class="sb-name">RPTBet</span></span>
-    <button class="copy sb-copy" type="button" data-copy="#reflink">Скопировать ссылку</button>
+    <button class="copy sb-copy" type="button" data-copy="#promocode">Скопировать бонус-код</button>
   </div>
 </div>
 
