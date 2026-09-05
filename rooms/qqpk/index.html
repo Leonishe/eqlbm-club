@@ -484,7 +484,7 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 
 /* ---------- контент виден сразу, без появления по скроллу ---------- */
-.rv,.rv.is-in{opacity:1;transform:none;transition:none}
+.rv,.rv.is-in,.js .rv,.js .rv.is-in{opacity:1;transform:none;transition:none}
 body{animation:eq-pagein .55s ease both}
 @keyframes eq-pagein{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){body{animation:none}}
@@ -564,7 +564,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
       </div>
       <div class="v-cell rv">
         <div class="v-label">Трекеры и HUD</div>
-        <div class="v-value v-no">HUD запрещен</div>
+        <div class="v-value v-no">HUD запрещён</div>
       </div>
       <div class="v-cell rv">
         <div class="v-label">Рейкбэк</div>
@@ -620,11 +620,11 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   </div>
 
   <div class="block rv">
-    <div class="block-head"><h2>Что есть в руме</h2><span class="checked">проверено 05.08.2026</span></div>
+    <div class="block-head"><h2>Что есть в руме</h2></div>
     <div class="rows">
       <div class="row"><div class="k">Турниры</div><div class="val">Только NLHE, бай-ины от фрироллов до $120. Регулярные, нокауты и Mystery Bounty, сателлиты на живые серии Triton в Азии</div></div>
       <div class="row"><div class="k">Кэш</div><div class="val">NLHE 6-max и 8-max с анте, Zoom, PLO, Short Deck и отдельная вкладка All-in or Fold</div></div>
-      <div class="row"><div class="k">Спины</div><div class="val">Lucky Spin с бай-инами $0.25, $1, $3 и $5. Вероятности множителей одинаковы на всех бай-инах</div></div>
+      <div class="row"><div class="k">Спины</div><div class="val">Lucky Spin с бай-инами $0,25, $1, $3 и $5. Вероятности множителей одинаковы на всех бай-инах</div></div>
       <div class="row"><div class="k">Джекпот</div><div class="val">Cooler Jackpot за частью столов: доля проигравшему с сильной комбинацией, победителю и остальным за столом</div></div>
     </div>
   </div>
@@ -635,16 +635,16 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   </div>
 
   <div class="block rv">
-    <div class="block-head"><h2>Депозит и бонусы</h2><span class="checked">проверено 05.08.2026</span></div>
+    <div class="block-head"><h2>Депозит и бонусы</h2></div>
     <div class="rows">
       <div class="row"><div class="k">Бонус на первый депозит</div><div class="val">100% до $888. Отбивается частями: $1 за каждые $5 рейка, 90 дней на отыгрыш</div></div>
       <div class="row"><div class="k">Дополнительно</div><div class="val">10 турнирных билетов по $22 на закрытые турниры для новичков и Daily Lucky Spin с призами</div></div>
-      <div class="row"><div class="k">Пополнение</div><div class="val">USDT в сетях TRC20, ERC20 и BEP20, плюс шесть национальных валют. Минимальный депозит для бонуса — $8.80</div></div>
+      <div class="row"><div class="k">Пополнение</div><div class="val">USDT в сетях TRC20, ERC20 и BEP20, плюс шесть национальных валют. Минимальный депозит для бонуса — $8,80</div></div>
     </div>
   </div>
 
   <div class="block rv">
-    <div class="block-head"><h2>Рейкбэк</h2><span class="checked">проверено 05.08.2026</span></div>
+    <div class="block-head"><h2>Рейкбэк</h2></div>
     <div class="rows">
       <div class="row"><div class="k">Программа рума</div><div class="val">Piggy Bank, 20 уровней. Уровень растёт от объёма рейка и никогда не понижается, до 20% возврата</div></div>
       <div class="row"><div class="k">Важно про Piggy Bank</div><div class="val">Награды не начисляются сами: нужно нажать Claim в клиенте. У копилки есть потолок — пока не заберёшь, новое не капает</div></div>
@@ -654,7 +654,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   </div>
 
   <div class="block rv">
-    <div class="block-head"><h2>Рейк</h2><span class="checked">проверено 05.08.2026</span></div>
+    <div class="block-head"><h2>Рейк</h2></div>
     <div class="rows">
       <div class="row"><div class="k">Кэш NLHE</div><div class="val">4% от банка, при 2–3 игроках — 2%. Кэп падает с ростом лимита: 10 бб на микро, 3 бб на NL100, 1 бб на NL1K</div></div>
       <div class="row"><div class="k">PLO и Short Deck</div><div class="val">5% с кэпом 3 бб на низких лимитах, 3–4% и 1–2 бб на высоких</div></div>
@@ -663,7 +663,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   </div>
 
   <div class="block rv">
-    <div class="block-head"><h2>Кэшауты</h2><span class="checked">проверено 05.08.2026</span></div>
+    <div class="block-head"><h2>Кэшауты</h2></div>
     <div class="rows">
       <div class="row"><div class="k">Способы</div><div class="val">USDT в сетях TRC20, ERC20 и BEP20, а также национальные валюты</div></div>
       <div class="row"><div class="k">Комиссия</div><div class="val">Рум не берёт комиссию за вывод</div></div>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EQLBM.CLUB — покерное комьюнити для MTT-игроков</title>
-<meta name="description" content="Покерное комьюнити для MTT-игроков: тренировки по темам, разбор твоей игры и стримы работы над игрой. Оплата — месячная подписка, весь профит ты забираешь себе.">
+<meta name="description" content="Покерное комьюнити для MTT-игроков: тренировки по темам, закрытые стримы работы над игрой и записи всех тренировок. Оплата — месячная подписка, весь профит ты забираешь себе.">
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EQLBM.CLUB">
 <meta property="og:title" content="EQLBM.CLUB — покерное комьюнити для MTT-игроков">
-<meta property="og:description" content="Покерное комьюнити для MTT-игроков: тренировки по темам, разбор твоей игры и стримы работы над игрой. Оплата — месячная подписка, весь профит ты забираешь себе.">
+<meta property="og:description" content="Покерное комьюнити для MTT-игроков: тренировки по темам, закрытые стримы работы над игрой и записи всех тренировок. Оплата — месячная подписка, весь профит ты забираешь себе.">
 <meta property="og:image" content="https://eqlbm.club/assets/og.png">
 <meta property="og:url" content="https://eqlbm.club/">
 <meta property="og:locale" content="ru_RU">
@@ -86,6 +86,7 @@ body{
 .price-mo b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.4rem;line-height:1}
 .price-mo span{color:var(--cream-dim);font-size:.85rem}
 .price-total{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.6rem;min-height:1.15rem}
+.price-total.is-plain{color:var(--cream-dim)}
 .pay .cta{margin-top:1.5rem}
 .pay-note{margin-top:1.4rem}
 .pay-ask{font-size:.88rem;color:var(--cream-dim);margin-top:1.1rem}
@@ -94,6 +95,22 @@ body{
 
 /* ---------- тарифы на главной ---------- */
 .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:2rem}
+.tiers.is-solo{grid-template-columns:1fr;max-width:400px}
+.get .soon{color:#6f6a62}
+.get .soon s{text-decoration:line-through}
+.get sup{color:var(--amber);font-size:.72em;margin-left:.2em}
+.get p.get-note{font-size:.71rem;line-height:1.45;color:#6f6a62;margin-top:.75rem}
+.ticks li.soon,.ticks li.soon::before{color:#6f6a62}
+.ticks li.soon s{text-decoration:line-through}
+.ticks li sup{color:var(--amber);font-size:.72em;margin-left:.2em}
+.tick-note{font-size:.76rem;line-height:1.5;color:var(--cream-dim);margin-top:.9rem}
+
+/* ---------- блок подписки по центру страницы ---------- */
+.pay-center{text-align:center}
+.pay-center .h-body{margin-left:auto;margin-right:auto}
+.pay-center .per{justify-content:center}
+.pay-center .tiers.is-solo{margin-left:auto;margin-right:auto}
+.pay-center .tier,.pay-center .callout{text-align:left}
 .tier{background:var(--ink);padding:1.7rem 1.4rem;display:flex;flex-direction:column}
 .tier.is-vip{background:rgba(255,255,255,.022)}
 .tier-nm{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft)}
@@ -517,7 +534,7 @@ p,li,td,th,.val,.ri-tag,.h-body{overflow-wrap:anywhere}
 
 
 /* ---------- контент виден сразу, без появления по скроллу ---------- */
-.rv,.rv.is-in{opacity:1;transform:none;transition:none}
+.rv,.rv.is-in,.js .rv,.js .rv.is-in{opacity:1;transform:none;transition:none}
 body{animation:eq-pagein .55s ease both}
 @keyframes eq-pagein{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){body{animation:none}}
@@ -572,7 +589,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <h1 class="h-thesis fade">Безопасное пространство для развития покерной карьеры</h1>
   <div class="h-actions fade">
     <div class="btn-pair">
-      <a class="cta cta-inline" href="#tariffs">Выбрать тариф</a>
+      <a class="cta cta-inline" href="#tariffs">Оформить подписку</a>
       <a class="cta cta-inline cta-ghost" href="#inside">Что внутри</a>
     </div>
   </div>
@@ -589,76 +606,61 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <div class="gets">
     <div class="get rv">
       <h3>Тренировки</h3>
-      <p>Регулярные живые тренировки с разбором игры и отдельные тренировки по темам.</p>
+      <p>Регулярные живые тренировки с разбором игры и отдельные тренировки по темам. Цели, челленджи, мазы внутри клуба — всё как мы любим.</p>
     </div>
     <div class="get rv">
       <h3>Работа над игрой</h3>
-      <p>Закрытые стримы работы над игрой, разборы финальных столов, разбор баз игроков.</p>
+      <p>Закрытые стримы работы над игрой и разборы финальных столов. Разборы ресерчей поля. Разборы стилей игры регов и фишей.</p>
     </div>
     <div class="get rv">
-      <h3>Библиотека и комьюнити</h3>
-      <p>Видеозаписи всех тренировок и все доступные материалы. Чат комьюнити.</p>
+      <h3>Библиотека</h3>
+      <p>Материалы и записи всех тренировок. Доступ открыт всё время, пока действует подписка. <span class="soon"><s>Сервер с софтом</s><sup>*</sup></span></p>
+      <p class="get-note">* Будет добавлено после набора группы</p>
     </div>
   </div>
 </section>
 
-<section class="wrap h-sec" id="tariffs">
-  <h2 class="h-title rv">Три варианта подписки</h2>
-  <p class="h-body rv">Оплата в USDT через бота. При оплате за 3, 6 или 12 месяцев — скидка.</p>
+<section class="wrap h-sec pay-center" id="tariffs">
+  <h2 class="h-title rv">Подписка</h2>
+  <p class="h-body rv">Оплата в USDT через бота. Выбери срок — цена пересчитается.</p>
 
-  <div class="tiers">
+  <div class="per" id="periods">
+    <button type="button" class="is-on" data-p="1" data-d="0">1 месяц</button>
+    <button type="button" data-p="3" data-d="10">3 месяца <span class="off">−10%</span></button>
+    <button type="button" data-p="6" data-d="17">6 месяцев <span class="off">−17%</span></button>
+    <button type="button" data-p="12" data-d="25">12 месяцев <span class="off">−25%</span></button>
+  </div>
+
+  <div class="tiers is-solo">
     <div class="tier rv">
-      <div class="tier-nm">Base</div>
-      <div class="tier-pr"><b>$35</b><span>в месяц</span></div>
-      <div class="tier-next"><i>с 9 сентября</i><b>$50</b></div>
+      <div class="tier-nm">EQUILIBRIUM</div>
+      <div class="tier-pr"><b id="e-mo">$300</b><span>в месяц</span></div>
+      <div class="price-total is-plain" id="e-total">оплата помесячно</div>
       <ul class="ticks">
         <li>Чат комьюнити</li>
-        <li>Видео по основам покера</li>
-        <li>1 тренировка в неделю</li>
+        <li>1 общая тренировка в неделю</li>
         <li>Видеозаписи всех тренировок</li>
-        <li>Полезные материалы</li>
-      </ul>
-      <div class="tier-for"><i>Кому подходит</i>Начинающим игрокам до аби10</div>
-      <a class="cta" href="https://t.me/EQLBMBOT?start=pay_base_1" target="_blank" rel="noopener">Оформить Base</a>
-    </div>
-
-    <div class="tier rv">
-      <div class="tier-nm">Pro</div>
-      <div class="tier-pr"><b>$100</b><span>в месяц</span></div>
-      <div class="tier-next"><i>с 9 сентября</i><b>$150</b></div>
-      <ul class="ticks">
-        <li>Всё из Base</li>
-        <li>Закрытые стримы работы над игрой</li>
+        <li>Стримы работы над игрой в Discord</li>
         <li>Тематические тренировки</li>
-        <li>Разбор баз игроков от аби10 до аби50 из комьюнити</li>
-        <li>Полезные материалы для PRO</li>
+        <li>Полезные материалы</li>
+        <li>Секретные бонусы</li>
+        <li class="soon"><s>Сервер с софтом</s><sup>*</sup></li>
       </ul>
-      <div class="tier-for"><i>Кому подходит</i>Игрокам до аби50</div>
-      <a class="cta" href="https://t.me/EQLBMBOT?start=pay_pro_1" target="_blank" rel="noopener">Оформить Pro</a>
-    </div>
-
-    <div class="tier is-vip rv">
-      <div class="tier-nm">VIP</div>
-      <div class="tier-pr"><b>$500</b><span>в месяц</span></div>
-      <div class="tier-next flat"><i>цена не меняется</i></div>
-      <ul class="ticks">
-        <li>Всё из Pro</li>
-        <li>Разбор базы</li>
-        <li>Разбор записи лайв-игры</li>
-        <li>1 час с психологом</li>
-        <li>1 час с коучем</li>
-        <li>Постоянная связь и поддержка</li>
-        <li>Контроль базы</li>
-        <li>Сервер для расчётов</li>
-      </ul>
-      <a class="cta cta-ghost" href="https://t.me/EQLBMBOT?start=pay_vip_1" target="_blank" rel="noopener">Оформить VIP</a>
+      <p class="tick-note">* Будет добавлено после набора группы</p>
+      <a class="cta" id="e-cta" href="https://t.me/EQLBMBOT?start=pay_equilibrium_1" target="_blank" rel="noopener">Оформить EQUILIBRIUM</a>
     </div>
   </div>
 
   <div class="callout tier-note rv">
-    <p>Первый набор открыт. Цена фиксируется за тобой навсегда — следующий набор после 9 сентября будет дороже.</p>
-    <p>Уходишь — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, пересчитаем по обычной цене за прожитое и вернём всё, что осталось. Мы можем завершить сотрудничество так же, со своей стороны.</p>
+    <p>Первый набор открыт, цена фиксируется за тобой навсегда — следующий набор будет открыт через месяц и цена будет дороже. Количество мест ограничено. Первая общая тренировка в комьюнити пройдёт уже 12 сентября.</p>
+    <p>Уходишь — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, вернём остаток по той же цене, по которой платил, без пересчёта. Мы можем завершить сотрудничество так же, со своей стороны.</p>
   </div>
+
+  <div class="callout pay-note rv">
+    <p>Кнопка открывает бота — он выдаст адрес для оплаты и откроет доступ в Discord в тот же день.</p>
+    <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+  </div>
+  <p class="pay-ask">Вопросы до оплаты — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
 </section>
 
 <section class="h-band">
@@ -666,7 +668,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
     <p class="eyebrow rv">Аффилейт-программа</p>
 <h2 class="h-title rv">Румы, в которых мы играем</h2>
 <p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + доступ в общий чат комьюнити.</p>
-<div class="figs rv"><div class="fig"><b>15</b><span>румов</span></div><div class="fig"><b>до 80%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата в месяц</span></div></div>
+<div class="figs rv"><div class="fig"><b>15</b><span>румов</span></div><div class="fig"><b>до 70%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата рейкбэка в месяц</span></div></div>
     <div class="room-strip rv">
 <a href="/rooms/coinpoker/" data-name="CoinPoker" aria-label="CoinPoker"><img src="/assets/rooms/coinpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/truepoker/" data-name="TruePoker" aria-label="TruePoker"><img src="/assets/rooms/truepoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/champion/" data-name="Champion Poker" aria-label="Champion Poker"><img src="/assets/rooms/champion.png" alt="" width="48" height="48" loading="lazy"></a>
       <a href="/rooms/qqpk/" data-name="QQPK" aria-label="QQPK"><img src="/assets/rooms/qqpk.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/betonline/" data-name="BetOnline" aria-label="BetOnline"><img src="/assets/rooms/betonline.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/yapoker/" data-name="YaPoker" aria-label="YaPoker"><img src="/assets/rooms/yapoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/blackchip/" data-name="BlackChipPoker" aria-label="BlackChipPoker"><img src="/assets/rooms/blackchip.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/acr/" data-name="ACR" aria-label="ACR"><img src="/assets/rooms/acr.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerking/" data-name="PokerKing" aria-label="PokerKing"><img src="/assets/rooms/pokerking.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/sportsbetting/" data-name="SportsBetting.ag" aria-label="SportsBetting.ag"><img src="/assets/rooms/sportsbetting.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/tigergaming/" data-name="TigerGaming" aria-label="TigerGaming"><img src="/assets/rooms/tigergaming.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/bcpoker/" data-name="BCPoker" aria-label="BCPoker"><img src="/assets/rooms/bcpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerdom/" data-name="PokerDom" aria-label="PokerDom"><img src="/assets/rooms/pokerdom.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/rptbet/" data-name="RPTBet" aria-label="RPTBet"><img src="/assets/rooms/rptbet.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/nexa/" data-name="NexaPoker" aria-label="NexaPoker"><img src="/assets/rooms/nexa.png" alt="" width="48" height="48" loading="lazy"></a>    </div>
@@ -751,6 +753,32 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
       }, { passive: true });
     }
   }
+})();
+</script><script>
+(function(){
+  var base = 300;
+  var box = document.getElementById('periods');
+  if (!box) return;
+  var btns = box.querySelectorAll('button');
+
+  function money(n){ return '$' + n.toLocaleString('ru-RU'); }
+
+  function apply(months, off){
+    btns.forEach(function(b){ b.classList.toggle('is-on', b.dataset.p === String(months)); });
+    var mo = Math.round(base * (1 - off / 100));
+    document.getElementById('e-mo').textContent = money(mo);
+    var total = document.getElementById('e-total');
+    total.classList.toggle('is-plain', months === 1);
+    total.textContent = months === 1
+      ? 'оплата помесячно'
+      : months + ' мес · ' + money(mo * months) + ' сразу';
+    document.getElementById('e-cta').href =
+      'https://t.me/EQLBMBOT?start=pay_equilibrium_' + months;
+  }
+
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){ apply(+b.dataset.p, +b.dataset.d); });
+  });
 })();
 </script></body>
 </html>
