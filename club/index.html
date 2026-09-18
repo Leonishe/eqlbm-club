@@ -517,6 +517,19 @@ html{scrollbar-color:#3a332c var(--ink);scrollbar-width:auto}
 .pay-center .tier,.pay-center .callout{text-align:left}
 .tier{background:var(--ink);padding:1.7rem 1.4rem;display:flex;flex-direction:column}
 .tier.is-vip{background:rgba(255,255,255,.022)}
+.tier-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(217,164,65,.42);border-radius:99px;padding:.32rem .75rem;margin-bottom:.95rem}
+.fine{max-width:62ch;margin:1.7rem auto 0;text-align:left}
+.fine details{border-bottom:1px solid var(--line)}
+.fine details:first-child{border-top:1px solid var(--line)}
+.fine summary{cursor:pointer;list-style:none;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);padding:.9rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.fine summary::-webkit-details-marker{display:none}
+.fine summary::after{content:'+';font-size:1rem;color:var(--violet-soft);line-height:1}
+.fine details[open] summary{color:var(--cream)}
+.fine details[open] summary::after{content:'−'}
+.fine summary:hover,.fine summary:focus-visible{color:var(--cream)}
+.fine details p{font-size:.82rem;line-height:1.65;color:#8a847b;padding-bottom:.9rem}
+.fine details p + p{margin-top:.6rem}
+.pay-ask{margin-top:1.5rem}
 .tier-head{border:1px solid rgba(139,92,246,.42);border-radius:9px;padding:1.55rem 1.1rem 1rem;text-align:center;background:linear-gradient(180deg,rgba(139,92,246,.13),rgba(139,92,246,.02) 70%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 44px -20px rgba(139,92,246,.9)}
 .tier-nm{font-family:'IBM Plex Mono',monospace;font-size:1.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--violet-soft);text-indent:.3em;line-height:1.1}
 @media(max-width:619px){.tier-nm{font-size:1.1rem;letter-spacing:.2em}.tier-head{padding:1.35rem .8rem .9rem}}
@@ -653,6 +666,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <div class="tiers is-solo">
     <div class="tier rv">
       <div class="tier-head">
+        <div class="tier-badge">Первый набор · 10 мест</div>
         <div class="tier-nm">EQUILIBRIUM</div>
         <div class="tier-pr"><b id="e-mo">$349</b></div>
         <div class="price-total" id="e-total">1 месяц</div>
@@ -672,14 +686,20 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
     </div>
   </div>
 
-  <div class="callout tier-note rv">
-    <p>Первый набор открыт, цена фиксируется за тобой навсегда — следующий набор будет открыт через месяц и цена будет дороже. Количество мест ограничено — всего 10. Первая общая тренировка в комьюнити пройдёт уже 1 октября.</p>
-    <p>Если получил не то, что ожидал — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, вернём остаток по той же цене, по которой платил, без пересчёта. Мы можем завершить сотрудничество так же, со своей стороны, с полным возвратом средств за последний месяц.</p>
-  </div>
-
-  <div class="callout pay-note rv">
-    <p>Кнопка открывает бота — он выдаст адрес для оплаты и откроет доступ в Discord в тот же день.</p>
-    <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+  <div class="fine rv">
+    <details>
+      <summary>Подробнее о наборе</summary>
+      <p>Набор открыт и продлится до 30 сентября. Количество мест ограничено — всего 10. Первый созвон комьюнити состоится уже 1 октября.</p>
+    </details>
+    <details>
+      <summary>Возврат денег</summary>
+      <p>Если получил не то, что ожидал — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, вернём остаток по той же цене, по которой платил, без пересчёта. Мы можем завершить сотрудничество так же, со своей стороны, с полным возвратом средств за последний месяц.</p>
+    </details>
+    <details>
+      <summary>Как проходит оплата</summary>
+      <p>Кнопка открывает бота — он выдаст адрес для оплаты и откроет доступ в Discord в тот же день.</p>
+      <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+    </details>
   </div>
   <p class="pay-ask">Вопросы до оплаты — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
 </section>
