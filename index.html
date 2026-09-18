@@ -104,6 +104,7 @@ body{
 .ticks li.soon s{text-decoration:line-through}
 .ticks li sup{color:var(--amber);font-size:.72em;margin-left:.2em}
 .tick-note{font-size:.76rem;line-height:1.5;color:var(--cream-dim);margin-top:.9rem}
+.tick-note + .tick-note{margin-top:.35rem}
 
 /* ---------- блок подписки по центру страницы ---------- */
 .pay-center{text-align:center}
@@ -113,10 +114,14 @@ body{
 .pay-center .tier,.pay-center .callout{text-align:left}
 .tier{background:var(--ink);padding:1.7rem 1.4rem;display:flex;flex-direction:column}
 .tier.is-vip{background:rgba(255,255,255,.022)}
-.tier-nm{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft)}
+.tier-head{border:1px solid rgba(139,92,246,.42);border-radius:9px;padding:1.55rem 1.1rem 1rem;text-align:center;background:linear-gradient(180deg,rgba(139,92,246,.13),rgba(139,92,246,.02) 70%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 0 44px -20px rgba(139,92,246,.9)}
+.tier-nm{font-family:'IBM Plex Mono',monospace;font-size:1.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--violet-soft);text-indent:.3em;line-height:1.1}
+@media(max-width:619px){.tier-nm{font-size:1.1rem;letter-spacing:.2em}.tier-head{padding:1.35rem .8rem .9rem}}
 .tier-for{font-size:.92rem;color:var(--cream)}
-.tier-pr{display:flex;align-items:baseline;gap:.45rem;min-height:2.7rem}
-.tier-pr b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.5rem;line-height:1}
+.tier-pr{display:flex;align-items:baseline;justify-content:center;margin-top:.85rem}
+.tier .price-total:not(:empty){text-align:center;margin-top:.5rem}
+.tier .price-total:empty{margin:0}
+.tier-pr b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3.4rem;line-height:1;color:var(--cream)}
 .tier-pr span{color:var(--cream-dim);font-size:.85rem}
 .tier-next{display:flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.5rem .7rem;border:1px solid rgba(217,164,65,.35);border-radius:5px;min-height:2.5rem}
 .tier-next i{font-style:normal;font-size:.76rem;color:var(--cream-dim)}
@@ -633,27 +638,29 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 
   <div class="tiers is-solo">
     <div class="tier rv">
-      <div class="tier-nm">EQUILIBRIUM</div>
-      <div class="tier-pr"><b id="e-mo">$300</b><span>в месяц</span></div>
-      <div class="price-total is-plain" id="e-total">оплата помесячно</div>
+      <div class="tier-head">
+        <div class="tier-nm">EQUILIBRIUM</div>
+        <div class="tier-pr"><b id="e-mo">$349</b></div>
+        <div class="price-total" id="e-total">1 месяц</div>
+      </div>
       <ul class="ticks">
-        <li>Чат комьюнити</li>
-        <li>1 общая тренировка в неделю</li>
-        <li>Видеозаписи всех тренировок</li>
-        <li>Стримы работы над игрой в Discord</li>
+        <li>Групповые тренировки</li>
+        <li>Работа над игрой<sup>*</sup></li>
+        <li>Детальный разбор раздач</li>
         <li>Тематические тренировки</li>
         <li>Полезные материалы</li>
-        <li>Секретные бонусы</li>
-        <li class="soon"><s>Сервер с софтом</s><sup>*</sup></li>
+        <li>Работа над менталкой</li>
+        <li class="soon"><s>Сервер с софтом</s><sup>**</sup></li>
       </ul>
-      <p class="tick-note">* Будет добавлено после набора группы</p>
+      <p class="tick-note">* Разбор турниров, финалок, финалок мейджеров, расчёты в HRC, ресерчи, разбор записей лайв-сессий</p>
+      <p class="tick-note">** Будет добавлено после набора группы</p>
       <a class="cta" id="e-cta" href="https://t.me/EQLBMBOT?start=pay_equilibrium_1" target="_blank" rel="noopener">Оформить EQUILIBRIUM</a>
     </div>
   </div>
 
   <div class="callout tier-note rv">
-    <p>Первый набор открыт, цена фиксируется за тобой навсегда — следующий набор будет открыт через месяц и цена будет дороже. Количество мест ограничено. Первая общая тренировка в комьюнити пройдёт уже 12 сентября.</p>
-    <p>Уходишь — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, вернём остаток по той же цене, по которой платил, без пересчёта. Мы можем завершить сотрудничество так же, со своей стороны.</p>
+    <p>Первый набор открыт, цена фиксируется за тобой навсегда — следующий набор будет открыт через месяц и цена будет дороже. Количество мест ограничено — всего 10. Первая общая тренировка в комьюнити пройдёт уже 1 октября.</p>
+    <p>Если получил не то, что ожидал — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, вернём остаток по той же цене, по которой платил, без пересчёта. Мы можем завершить сотрудничество так же, со своей стороны, с полным возвратом средств за последний месяц.</p>
   </div>
 
   <div class="callout pay-note rv">
@@ -668,10 +675,10 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
     <p class="eyebrow rv">Аффилейт-программа</p>
 <h2 class="h-title rv">Румы, в которых мы играем</h2>
 <p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + доступ в общий чат комьюнити.</p>
-<div class="figs rv"><div class="fig"><b>15</b><span>румов</span></div><div class="fig"><b>до 70%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата рейкбэка в месяц</span></div></div>
+<div class="figs rv"><div class="fig"><b>14</b><span>румов</span></div><div class="fig"><b>до 70%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата рейкбэка в месяц</span></div></div>
     <div class="room-strip rv">
 <a href="/rooms/coinpoker/" data-name="CoinPoker" aria-label="CoinPoker"><img src="/assets/rooms/coinpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/truepoker/" data-name="TruePoker" aria-label="TruePoker"><img src="/assets/rooms/truepoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/champion/" data-name="Champion Poker" aria-label="Champion Poker"><img src="/assets/rooms/champion.png" alt="" width="48" height="48" loading="lazy"></a>
-      <a href="/rooms/qqpk/" data-name="QQPK" aria-label="QQPK"><img src="/assets/rooms/qqpk.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/betonline/" data-name="BetOnline" aria-label="BetOnline"><img src="/assets/rooms/betonline.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/yapoker/" data-name="YaPoker" aria-label="YaPoker"><img src="/assets/rooms/yapoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/blackchip/" data-name="BlackChipPoker" aria-label="BlackChipPoker"><img src="/assets/rooms/blackchip.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/acr/" data-name="ACR" aria-label="ACR"><img src="/assets/rooms/acr.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerking/" data-name="PokerKing" aria-label="PokerKing"><img src="/assets/rooms/pokerking.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/sportsbetting/" data-name="SportsBetting.ag" aria-label="SportsBetting.ag"><img src="/assets/rooms/sportsbetting.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/tigergaming/" data-name="TigerGaming" aria-label="TigerGaming"><img src="/assets/rooms/tigergaming.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/bcpoker/" data-name="BCPoker" aria-label="BCPoker"><img src="/assets/rooms/bcpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerdom/" data-name="PokerDom" aria-label="PokerDom"><img src="/assets/rooms/pokerdom.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/rptbet/" data-name="RPTBet" aria-label="RPTBet"><img src="/assets/rooms/rptbet.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/nexa/" data-name="NexaPoker" aria-label="NexaPoker"><img src="/assets/rooms/nexa.png" alt="" width="48" height="48" loading="lazy"></a>    </div>
+      <a href="/rooms/qqpk/" data-name="QQPK" aria-label="QQPK"><img src="/assets/rooms/qqpk.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/betonline/" data-name="BetOnline" aria-label="BetOnline"><img src="/assets/rooms/betonline.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/yapoker/" data-name="YaPoker" aria-label="YaPoker"><img src="/assets/rooms/yapoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/blackchip/" data-name="BlackChipPoker" aria-label="BlackChipPoker"><img src="/assets/rooms/blackchip.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/acr/" data-name="ACR" aria-label="ACR"><img src="/assets/rooms/acr.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/sportsbetting/" data-name="SportsBetting.ag" aria-label="SportsBetting.ag"><img src="/assets/rooms/sportsbetting.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/tigergaming/" data-name="TigerGaming" aria-label="TigerGaming"><img src="/assets/rooms/tigergaming.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/bcpoker/" data-name="BCPoker" aria-label="BCPoker"><img src="/assets/rooms/bcpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerdom/" data-name="PokerDom" aria-label="PokerDom"><img src="/assets/rooms/pokerdom.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/rptbet/" data-name="RPTBet" aria-label="RPTBet"><img src="/assets/rooms/rptbet.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/nexa/" data-name="NexaPoker" aria-label="NexaPoker"><img src="/assets/rooms/nexa.png" alt="" width="48" height="48" loading="lazy"></a>    </div>
     <a class="cta cta-inline" href="/rooms/">Все румы</a>
   </div>
 </section>
@@ -756,7 +763,7 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
 })();
 </script><script>
 (function(){
-  var base = 300;
+  var base = 349;
   var box = document.getElementById('periods');
   if (!box) return;
   var btns = box.querySelectorAll('button');
@@ -768,10 +775,10 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
     var mo = Math.round(base * (1 - off / 100));
     document.getElementById('e-mo').textContent = money(mo);
     var total = document.getElementById('e-total');
-    total.classList.toggle('is-plain', months === 1);
+    var word = months === 1 ? 'месяц' : (months < 5 ? 'месяца' : 'месяцев');
     total.textContent = months === 1
-      ? 'оплата помесячно'
-      : months + ' мес · ' + money(mo * months) + ' сразу';
+      ? '1 месяц'
+      : months + ' ' + word + ' · ' + money(mo * months) + ' сразу';
     document.getElementById('e-cta').href =
       'https://t.me/EQLBMBOT?start=pay_equilibrium_' + months;
   }
