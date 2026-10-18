@@ -586,6 +586,17 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 }
 /* ---------- отступ по краям задаём напрямую, без переменной ---------- */
 .wrap{padding-left:max(1.5rem,var(--sp));padding-right:max(1.5rem,var(--sp))}
+
+/* ---------- второй набор: итоги месяца и статус ---------- */
+.month .figs{gap:clamp(1.4rem,4vw,2.6rem);margin-top:1.8rem}
+.month .fig b{font-size:clamp(1.6rem,4vw,2.2rem)}
+.month-k{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.8rem}
+.month-k + .figs{margin-top:.8rem}
+.month .fig-sum b{color:var(--violet-soft)}
+.month .callout{margin-top:2rem;max-width:62ch}
+.tier-status{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-top:.9rem;padding:.5rem .7rem;border:1px solid rgba(217,164,65,.35);border-radius:5px}
+.tier-status.is-open{color:var(--violet-soft);border-color:rgba(139,92,246,.45)}
+.tier-status.is-closed{color:#6f6a62;border-color:var(--line)}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -607,7 +618,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <h1 class="h-thesis fade">Безопасное пространство для развития покерной карьеры</h1>
   <div class="h-actions fade">
     <div class="btn-pair">
-      <a class="cta cta-inline" href="#tariffs">Оформить подписку</a>
+      <a class="cta cta-inline" id="hero-cta" href="#tariffs">Набор в клуб</a>
       <a class="cta cta-inline cta-ghost" href="#inside">Что внутри</a>
     </div>
   </div>
@@ -638,9 +649,31 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   </div>
 </section>
 
+<section class="h-band month">
+  <div class="wrap">
+    <p class="eyebrow rv">Октябрь 2026</p>
+    <h2 class="h-title rv">Первый месяц клуба</h2>
+    <p class="month-k rv">Уже сделано</p>
+    <div class="figs rv">
+      <div class="fig"><b>10</b><span>созвонов</span></div>
+      <div class="fig"><b>6</b><span>разобранных баз</span></div>
+      <div class="fig"><b>2</b><span>дипрана разобрали</span></div>
+      <div class="fig"><b>~25</b><span>часов отработано</span></div>
+    </div>
+    <p class="month-k rv">До конца октября</p>
+    <div class="figs rv">
+      <div class="fig"><b>+6</b><span>созвонов с разборами в ICM</span></div>
+      <div class="fig"><b>+1</b><span>тематическая тренировка по PKO</span></div>
+      <div class="fig fig-sum"><b>~40</b><span>часов за месяц</span></div>
+    </div>
+    <p class="h-body rv">Работали в Wizard префлоп и постфлоп, разбирали ICM-споты. У ребят были финалки и дипраны. Кто-то и до клуба играл сильно, а кто-то говорит, что стал чувствовать себя увереннее за столами.</p>
+    <div class="callout rv"><p class="c-lead" style="margin:0">В ноябре — 12 плановых тренировок</p></div>
+  </div>
+</section>
+
 <section class="wrap h-sec pay-center" id="tariffs">
   <h2 class="h-title rv">Подписка</h2>
-  <p class="h-body rv">Оплата в USDT через бота. Выбери период — цена пересчитается.</p>
+  <p class="h-body rv">Цена за месяц. При оплате вперёд — скидка, выбери период.</p>
 
   <div class="per" id="periods">
     <button type="button" class="is-on" data-p="1" data-d="0">1 месяц</button>
@@ -652,10 +685,11 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <div class="tiers is-solo">
     <div class="tier rv">
       <div class="tier-head">
-        <div class="tier-badge">Первый набор · 10 мест</div>
+        <div class="tier-badge">Второй набор · 4 места</div>
         <div class="tier-nm">EQUILIBRIUM</div>
-        <div class="tier-pr"><b id="e-mo">$349</b></div>
-        <div class="price-total" id="e-total">1 месяц</div>
+        <div class="tier-pr"><b id="e-mo">$500</b></div>
+        <div class="price-total" id="e-total">в месяц</div>
+        <div class="tier-status is-soon" id="e-status">Набор откроется 26 октября</div>
       </div>
       <ul class="ticks">
         <li>Групповые тренировки</li>
@@ -668,33 +702,32 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
       </ul>
       <p class="tick-note">* Разбор турниров, финалок, финалок мейджеров, расчёты в HRC, ресерчи, разбор записей лайв-сессий</p>
       <p class="tick-note">** Будет добавлено после набора группы</p>
-      <a class="cta" id="e-cta" href="https://t.me/EQLBMBOT?start=pay_equilibrium_1" target="_blank" rel="noopener">Оформить EQUILIBRIUM</a>
+      <a class="cta" id="e-cta" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать заранее</a>
     </div>
   </div>
 
   <div class="fine rv">
     <details>
       <summary>Подробнее о наборе</summary>
-      <p>Набор открыт и продлится до 30 сентября. Количество мест ограничено — всего 10. Первый созвон комьюнити состоится уже 1 октября.</p>
+      <p id="e-about">Второй набор откроется 26 октября и продлится до 1 ноября. Мест — 4. Напиши заранее, и я сообщу, когда набор откроется.</p>
     </details>
     <details>
       <summary>Возврат денег</summary>
       <p>Если получил не то, что ожидал — вернём деньги за последний месяц. Если платил вперёд за несколько месяцев, вернём остаток по той же цене, по которой платил, без пересчёта. Мы можем завершить сотрудничество так же, со своей стороны, с полным возвратом средств за последний месяц.</p>
     </details>
     <details>
-      <summary>Как проходит оплата</summary>
-      <p>Кнопка открывает бота — он выдаст адрес для оплаты и откроет доступ в Discord в тот же день.</p>
-      <p>Бот сам напомнит за 3 дня до конца подписки. Пока не оплатил — не пишет.</p>
+      <summary>Как оплатить</summary>
+      <p>Способ оплаты обсуждаем в личке — напиши мне в телеграм. После оплаты в тот же день открываю доступ в Discord.</p>
     </details>
   </div>
-  <p class="pay-ask">Вопросы до оплаты — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
+  <p class="pay-ask">Вопросы — <a href="https://t.me/leonishe" target="_blank" rel="noopener">напиши мне в телеграм</a>.</p>
 </section>
 
 <section class="h-band">
   <div class="wrap">
     <p class="eyebrow rv">Аффилейт-программа</p>
 <h2 class="h-title rv">Румы, в которых мы играем</h2>
-<p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + доступ в общий чат комьюнити.</p>
+<p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + 2 тренировки клуба в месяц.</p>
 <div class="figs rv"><div class="fig"><b>14</b><span>румов</span></div><div class="fig"><b>до 70%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата рейкбэка в месяц</span></div></div>
     <div class="room-strip rv">
 <a href="/rooms/coinpoker/" data-name="CoinPoker" aria-label="CoinPoker"><img src="/assets/rooms/coinpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/truepoker/" data-name="TruePoker" aria-label="TruePoker"><img src="/assets/rooms/truepoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/champion/" data-name="Champion Poker" aria-label="Champion Poker"><img src="/assets/rooms/champion.png" alt="" width="48" height="48" loading="lazy"></a>
@@ -783,13 +816,11 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
 })();
 </script><script>
 (function(){
-  var base = 349;
+  var base = 500;
   var box = document.getElementById('periods');
   if (!box) return;
   var btns = box.querySelectorAll('button');
-
   function money(n){ return '$' + n.toLocaleString('ru-RU'); }
-
   function apply(months, off){
     btns.forEach(function(b){ b.classList.toggle('is-on', b.dataset.p === String(months)); });
     var mo = Math.round(base * (1 - off / 100));
@@ -797,15 +828,34 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
     var total = document.getElementById('e-total');
     var word = months === 1 ? 'месяц' : (months < 5 ? 'месяца' : 'месяцев');
     total.textContent = months === 1
-      ? '1 месяц'
-      : months + ' ' + word + ' · ' + money(mo * months) + ' сразу';
-    document.getElementById('e-cta').href =
-      'https://t.me/EQLBMBOT?start=pay_equilibrium_' + months;
+      ? 'в месяц'
+      : 'в месяц · ' + months + ' ' + word + ' · ' + money(mo * months) + ' сразу';
   }
-
   btns.forEach(function(b){
     b.addEventListener('click', function(){ apply(+b.dataset.p, +b.dataset.d); });
   });
+})();
+</script>
+<script>
+(function(){
+  /* Статус набора по московскому времени: до 26.10 — скоро, 26.10–01.11 — открыт, потом — закрыт */
+  var OPEN = Date.UTC(2026, 9, 25, 21, 0);   // 26.10.2026 00:00 МСК
+  var CLOSE = Date.UTC(2026, 10, 1, 21, 0);  // 02.11.2026 00:00 МСК
+  var now = Date.now();
+  var st = now < OPEN ? 'soon' : (now < CLOSE ? 'open' : 'closed');
+  var T = {
+    soon:   {s:'Набор откроется 26 октября', c:'Написать заранее',
+             d:'Второй набор откроется 26 октября и продлится до 1 ноября. Мест — 4. Напиши заранее, и я сообщу, когда набор откроется.', h:'Набор в клуб'},
+    open:   {s:'Набор открыт до 1 ноября', c:'Записаться в набор',
+             d:'Второй набор открыт с 26 октября по 1 ноября. Мест — 4. Напиши мне в телеграм — расскажу детали и как оплатить.', h:'Записаться в набор'},
+    closed: {s:'Набор закрыт', c:'Узнать о следующем наборе',
+             d:'Второй набор закрыт. Напиши мне, чтобы узнать о следующем.', h:'Набор в клуб'}
+  }[st];
+  var el;
+  if ((el = document.getElementById('e-status'))) { el.textContent = T.s; el.className = 'tier-status is-' + st; }
+  if ((el = document.getElementById('e-cta'))) el.textContent = T.c;
+  if ((el = document.getElementById('e-about'))) el.textContent = T.d;
+  if ((el = document.getElementById('hero-cta'))) el.textContent = T.h;
 })();
 </script></body>
 </html>
