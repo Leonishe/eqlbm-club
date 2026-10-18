@@ -586,6 +586,23 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 .wrap{padding-left:max(1.5rem,var(--sp));padding-right:max(1.5rem,var(--sp))}
 
 /* ---------- второй набор: итоги месяца и статус ---------- */
+.mo-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:clamp(1.8rem,4vw,2.4rem)}
+@media(min-width:700px){.mo-grid{grid-template-columns:1fr 1fr}}
+.mo-col{background:var(--ink);padding:1.5rem 1.5rem 1rem}
+.h-band .mo-col{background:var(--panel)}
+.mo-head{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-soft);margin-bottom:.4rem}
+.mo-col ul{list-style:none}
+.mo-col li{display:grid;grid-template-columns:3.6rem 1fr;align-items:baseline;gap:.9rem;padding:.75rem 0;border-bottom:1px solid var(--line)}
+.mo-col li:last-child{border-bottom:none}
+.mo-col li b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.1rem;line-height:1;color:var(--cream)}
+.mo-col li span{font-size:.92rem;color:var(--cream-dim)}
+.mo-foot{grid-column:1/-1;background:radial-gradient(ellipse 60% 140% at 50% 0%,rgba(139,92,246,.16),rgba(139,92,246,.02) 75%),var(--ink);display:flex;justify-content:center;padding:1.6rem 1.5rem 1.5rem;text-align:center}
+.mo-total{display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.mo-total b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3.2rem;line-height:1;color:var(--violet-soft)}
+.mo-total span{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim)}
+.mo-next{font-size:.95rem;color:var(--cream-dim)}
+.mo-next strong{font-weight:500;color:var(--amber)}
+
 .month .figs{gap:clamp(1.4rem,4vw,2.6rem);margin-top:1.8rem}
 .month .fig b{font-size:clamp(1.6rem,4vw,2.2rem)}
 .month-k{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);margin-top:1.8rem}
@@ -628,8 +645,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
     </div>
     <div class="get rv">
       <h3>Библиотека</h3>
-      <p>Материалы и записи всех тренировок. Доступ открыт всё время, пока действует подписка. <span class="soon"><s>Сервер с софтом</s><sup>*</sup></span></p>
-      <p class="get-note">* Будет добавлено после набора группы</p>
+      <p>Материалы и записи всех тренировок. Доступ открыт всё время, пока действует подписка.</p>
     </div>
   </div>
 </section>
@@ -638,21 +654,29 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <div class="wrap">
     <p class="eyebrow rv">Октябрь 2026</p>
     <h2 class="h-title rv">Первый месяц клуба</h2>
-    <p class="month-k rv">Уже сделано</p>
-    <div class="figs rv">
-      <div class="fig"><b>10</b><span>созвонов</span></div>
-      <div class="fig"><b>6</b><span>разобранных баз</span></div>
-      <div class="fig"><b>2</b><span>дипрана разобрали</span></div>
-      <div class="fig"><b>~25</b><span>часов отработано</span></div>
+    <p class="h-body rv">Работаем в Wizard префлоп и постфлоп, разбираем PKO и ICM-споты.</p>
+    <div class="mo-grid rv">
+      <div class="mo-col">
+        <div class="mo-head">Уже сделано</div>
+        <ul>
+          <li><b>10</b><span>тренировок</span></li>
+          <li><b>6</b><span>разобранных баз</span></li>
+          <li><b>2</b><span>разобранных дипрана</span></li>
+          <li><b>2</b><span>созвона по разбору раздач</span></li>
+        </ul>
+      </div>
+      <div class="mo-col">
+        <div class="mo-head">До конца октября</div>
+        <ul>
+          <li><b>+6</b><span>созвонов с разборами в ICM</span></li>
+          <li><b>+1</b><span>тематическая тренировка по PKO</span></li>
+          <li><b>~2</b><span>созвона работы в Wizard</span></li>
+        </ul>
+      </div>
+      <div class="mo-foot">
+        <div class="mo-total"><b>~40</b><span>часов за первый месяц</span></div>
+      </div>
     </div>
-    <p class="month-k rv">До конца октября</p>
-    <div class="figs rv">
-      <div class="fig"><b>+6</b><span>созвонов с разборами в ICM</span></div>
-      <div class="fig"><b>+1</b><span>тематическая тренировка по PKO</span></div>
-      <div class="fig fig-sum"><b>~40</b><span>часов за месяц</span></div>
-    </div>
-    <p class="h-body rv">Работали в Wizard префлоп и постфлоп, разбирали ICM-споты. У ребят были финалки и дипраны. Кто-то и до клуба играл сильно, а кто-то говорит, что стал чувствовать себя увереннее за столами.</p>
-    <div class="callout rv"><p class="c-lead" style="margin:0">В ноябре — 12 плановых тренировок</p></div>
   </div>
 </section>
 
@@ -712,10 +736,8 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
         <li>Тематические тренировки</li>
         <li>Полезные материалы</li>
         <li>Работа над менталкой</li>
-        <li class="soon"><s>Сервер с софтом</s><sup>**</sup></li>
       </ul>
       <p class="tick-note">* Разбор турниров, финалок, финалок мейджеров, расчёты в HRC, ресерчи, разбор записей лайв-сессий</p>
-      <p class="tick-note">** Будет добавлено после набора группы</p>
       <a class="cta" id="e-cta" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать заранее</a>
     </div>
   </div>
