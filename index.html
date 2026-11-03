@@ -614,6 +614,13 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 .tier-status{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-top:.9rem;padding:.5rem .7rem;border:1px solid rgba(217,164,65,.35);border-radius:5px}
 .tier-status.is-open{color:var(--violet-soft);border-color:rgba(139,92,246,.45)}
 .tier-status.is-closed{color:#6f6a62;border-color:var(--line)}
+
+/* ---------- лента слайдов тренировки ---------- */
+.deck{margin-top:clamp(2.4rem,5vw,3.2rem)}
+.deck{padding:1.5rem;border:1px solid var(--line);border-radius:9px;background:var(--ink)}
+.deck-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.2rem}
+.deck-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.6rem,4vw,2.1rem);color:var(--cream);line-height:1.1}
+.deck-sub{font-size:.92rem;color:var(--cream-dim);margin-top:.5rem;max-width:56ch}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
@@ -667,29 +674,41 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
 
 <section class="h-band month">
   <div class="wrap">
-    <p class="eyebrow rv">Октябрь 2026</p>
-    <h2 class="h-title rv">Первый месяц клуба</h2>
-    <p class="h-body rv">Работаем в Wizard префлоп и постфлоп, разбираем PKO и ICM-споты.</p>
+    <p class="eyebrow rv">Ноябрь 2026</p>
+    <h2 class="h-title rv">Второй месяц клуба</h2>
+    <p class="h-body rv">Итоги октября и план на ноябрь.</p>
     <div class="mo-grid rv">
       <div class="mo-col">
-        <div class="mo-head">Уже сделано</div>
+        <div class="mo-head">Октябрь — итоги</div>
         <ul>
-          <li><b>10</b><span>тренировок</span></li>
+          <li><b>12</b><span>плановых тренировок</span></li>
           <li><b>6</b><span>разобранных баз</span></li>
-          <li><b>2</b><span>разобранных дипрана</span></li>
-          <li><b>2</b><span>созвона по разбору раздач</span></li>
+          <li><b>4</b><span>разобранных дипрана</span></li>
+          <li><b>1</b><span>тематическая тренировка по PKO</span></li>
         </ul>
       </div>
       <div class="mo-col">
-        <div class="mo-head">До конца октября</div>
+        <div class="mo-head">План на ноябрь</div>
         <ul>
-          <li><b>+6</b><span>созвонов с разборами в ICM</span></li>
-          <li><b>+1</b><span>тематическая тренировка по PKO</span></li>
-          <li><b>~2</b><span>созвона работы в Wizard</span></li>
+          <li><b>12</b><span>тренировок по расписанию</span></li>
+          <li><b>~6</b><span>созвонов работы над игрой</span></li>
+          <li><b>+1</b><span>тренировка по PKO, часть 2</span></li>
+          <li><b>+1</b><span>тренировка по квадрату Фиата</span></li>
         </ul>
       </div>
       <div class="mo-foot">
-        <div class="mo-total"><b>~40</b><span>часов за первый месяц</span></div>
+        <div class="mo-total"><b>40</b><span>часов плановых тренировок в октябре</span></div>
+      </div>
+    </div>
+
+    <div class="deck rv">
+      <div class="deck-head">
+        <div>
+          <p class="mo-head">Тренировка октября</p>
+          <h3 class="deck-title">PKO basis · часть 1</h3>
+          <p class="deck-sub">51 слайд: математика bounty, диапазоны под покрытие, стадии и споты. Презентацию в PDF пришлю в телеграм.</p>
+        </div>
+        <a class="cta cta-inline" href="https://t.me/leonishe?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D0%BB%D0%B8%2C%20%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0%2C%20%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20PKO%20basis%20%D0%B2%20PDF" target="_blank" rel="noopener">Скачать PDF</a>
       </div>
     </div>
   </div>
@@ -750,7 +769,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
     <p class="eyebrow rv">Аффилейт-программа</p>
 <h2 class="h-title rv">Румы, в которых мы играем</h2>
 <p class="h-body rv">Зарегистрируйся в руме через EQLBM и получай рейкбэк + 2 тренировки клуба в месяц.</p>
-<div class="figs rv"><div class="fig"><b>14</b><span>румов</span></div><div class="fig"><b>до 70%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата рейкбэка в месяц</span></div></div>
+<div class="figs rv"><div class="fig"><b>16</b><span>румов</span></div><div class="fig"><b>до 70%</b><span>рейкбэк</span></div><div class="fig"><b>1</b><span>выплата рейкбэка в месяц</span></div></div>
     <div class="room-strip rv">
 <a href="/rooms/coinpoker/" data-name="CoinPoker" aria-label="CoinPoker"><img src="/assets/rooms/coinpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/truepoker/" data-name="TruePoker" aria-label="TruePoker"><img src="/assets/rooms/truepoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/champion/" data-name="Champion Poker" aria-label="Champion Poker"><img src="/assets/rooms/champion.png" alt="" width="48" height="48" loading="lazy"></a>
       <a href="/rooms/akspoker/" data-name="AKs Poker" aria-label="AKs Poker"><img src="/assets/rooms/akspoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/stake/" data-name="Stake" aria-label="Stake"><img src="/assets/rooms/stake.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/betonline/" data-name="BetOnline" aria-label="BetOnline"><img src="/assets/rooms/betonline.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/yapoker/" data-name="YaPoker" aria-label="YaPoker"><img src="/assets/rooms/yapoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/blackchip/" data-name="BlackChipPoker" aria-label="BlackChipPoker"><img src="/assets/rooms/blackchip.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/acr/" data-name="ACR" aria-label="ACR"><img src="/assets/rooms/acr.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/sportsbetting/" data-name="SportsBetting.ag" aria-label="SportsBetting.ag"><img src="/assets/rooms/sportsbetting.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/bcpoker/" data-name="BCPoker" aria-label="BCPoker"><img src="/assets/rooms/bcpoker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/pokerdom/" data-name="PokerDom" aria-label="PokerDom"><img src="/assets/rooms/pokerdom.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/rptbet/" data-name="RPTBet" aria-label="RPTBet"><img src="/assets/rooms/rptbet.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/nexa/" data-name="NexaPoker" aria-label="NexaPoker"><img src="/assets/rooms/nexa.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/888poker/" data-name="888poker" aria-label="888poker"><img src="/assets/rooms/888poker.png" alt="" width="48" height="48" loading="lazy"></a><a href="/rooms/qqpk/" data-name="QQPK" aria-label="QQPK"><img src="/assets/rooms/qqpk.png" alt="" width="48" height="48" loading="lazy"></a>    </div>
