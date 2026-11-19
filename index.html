@@ -136,6 +136,9 @@ body{
 .tier .price-total:empty{margin:0}
 .tier-pr b{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3.4rem;line-height:1;color:var(--cream)}
 .tier-pr span{color:var(--cream-dim);font-size:.85rem}
+.tier-pr .old-pr{font-family:'Cormorant Garamond',serif;font-size:2rem;line-height:1;color:var(--cream-dim);margin-right:.7rem;text-decoration:line-through;text-decoration-color:var(--amber);text-decoration-thickness:2px}
+.tier-promo{display:inline-block;margin-top:.9rem;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--amber);border-radius:99px;padding:.3rem .8rem}
+.is-hidden{display:none!important}
 .tier-next{display:flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.5rem .7rem;border:1px solid rgba(217,164,65,.35);border-radius:5px;min-height:2.5rem}
 .tier-next i{font-style:normal;font-size:.76rem;color:var(--cream-dim)}
 .tier-next b{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1rem;color:var(--amber)}
@@ -642,7 +645,7 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <h1 class="h-thesis fade">Безопасное пространство для развития покерной карьеры</h1>
   <div class="h-actions fade">
     <div class="btn-pair">
-      <a class="cta cta-inline" id="hero-cta" href="#tariffs">Набор в клуб</a>
+      <a class="cta cta-inline" id="hero-cta" href="#tariffs">Записаться в набор</a>
       <a class="cta cta-inline cta-ghost" href="#inside">Что внутри</a>
     </div>
   </div>
@@ -728,11 +731,12 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
   <div class="tiers is-solo">
     <div class="tier rv">
       <div class="tier-head">
-        <div class="tier-badge">Второй набор · 4 места</div>
+        <div class="tier-badge">Третий набор</div>
         <div class="tier-nm">EQUILIBRIUM</div>
-        <div class="tier-pr"><b id="e-mo">$500</b></div>
+        <div class="tier-promo" id="e-promo">Black Friday · до 30 ноября</div>
+        <div class="tier-pr"><s class="old-pr" id="e-old">$500</s><b id="e-mo">$349</b></div>
         <div class="price-total" id="e-total">в месяц</div>
-        <div class="tier-status is-soon" id="e-status">Набор откроется 26 октября</div>
+        <div class="tier-status is-open" id="e-status">Набор открыт до 30 ноября</div>
       </div>
       <ul class="ticks">
         <li>Групповые тренировки</li>
@@ -743,14 +747,14 @@ body{padding-bottom:clamp(2.5rem,8vw,4rem)}
         <li>Работа над менталкой</li>
       </ul>
       <p class="tick-note">* Разбор турниров, финалок, финалок мейджеров, расчёты в HRC, ресерчи, разбор записей лайв-сессий</p>
-      <a class="cta" id="e-cta" href="https://t.me/leonishe" target="_blank" rel="noopener">Написать заранее</a>
+      <a class="cta" id="e-cta" href="https://t.me/leonishe" target="_blank" rel="noopener">Записаться в набор</a>
     </div>
   </div>
 
   <div class="fine rv">
     <details>
       <summary>Подробнее о наборе</summary>
-      <p id="e-about">Второй набор откроется 26 октября и продлится до 1 ноября. Мест — 4. Напиши заранее, и я сообщу, когда набор откроется.</p>
+      <p id="e-about">Третий набор открыт до 30 ноября. Напиши мне в телеграм — расскажу детали и как оплатить.</p>
     </details>
     <details>
       <summary>Возврат денег</summary>
@@ -857,7 +861,18 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
 })();
 </script><script>
 (function(){
-  var base = 500;
+  /* Black Friday: $349 вместо $500 до 30.11.2026 включительно (МСК), потом цена возвращается сама */
+  var FULL = 500, SALE = 349;
+  var SALE_END = Date.UTC(2026, 10, 30, 21, 0); // 01.12.2026 00:00 МСК
+  var sale = Date.now() < SALE_END;
+  var base = sale ? SALE : FULL;
+  var oldEl = document.getElementById('e-old');
+  var promoEl = document.getElementById('e-promo');
+  if (!sale) {
+    if (oldEl) oldEl.classList.add('is-hidden');
+    if (promoEl) promoEl.classList.add('is-hidden');
+    document.getElementById('e-mo').textContent = '$' + FULL;
+  }
   var box = document.getElementById('periods');
   if (!box) return;
   var btns = box.querySelectorAll('button');
@@ -866,6 +881,7 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
     btns.forEach(function(b){ b.classList.toggle('is-on', b.dataset.p === String(months)); });
     var mo = Math.round(base * (1 - off / 100));
     document.getElementById('e-mo').textContent = money(mo);
+    if (sale && oldEl) oldEl.textContent = money(Math.round(FULL * (1 - off / 100)));
     var total = document.getElementById('e-total');
     var word = months === 1 ? 'месяц' : (months < 5 ? 'месяца' : 'месяцев');
     total.textContent = months === 1
@@ -879,18 +895,14 @@ document.querySelectorAll('.ab-fade').forEach(function(box){
 </script>
 <script>
 (function(){
-  /* Статус набора по московскому времени: до 26.10 — скоро, 26.10–01.11 — открыт, потом — закрыт */
-  var OPEN = Date.UTC(2026, 9, 25, 21, 0);   // 26.10.2026 00:00 МСК
-  var CLOSE = Date.UTC(2026, 10, 1, 21, 0);  // 02.11.2026 00:00 МСК
-  var now = Date.now();
-  var st = now < OPEN ? 'soon' : (now < CLOSE ? 'open' : 'closed');
+  /* Третий набор открыт до 30.11 включительно (МСК), с 01.12 — закрыт */
+  var CLOSE = Date.UTC(2026, 10, 30, 21, 0);  // 01.12.2026 00:00 МСК
+  var st = Date.now() < CLOSE ? 'open' : 'closed';
   var T = {
-    soon:   {s:'Набор откроется 26 октября', c:'Написать заранее',
-             d:'Второй набор откроется 26 октября и продлится до 1 ноября. Мест — 4. Напиши заранее, и я сообщу, когда набор откроется.', h:'Набор в клуб'},
-    open:   {s:'Набор открыт до 1 ноября', c:'Записаться в набор',
-             d:'Второй набор открыт с 26 октября по 1 ноября. Мест — 4. Напиши мне в телеграм — расскажу детали и как оплатить.', h:'Записаться в набор'},
+    open:   {s:'Набор открыт до 30 ноября', c:'Записаться в набор',
+             d:'Третий набор открыт до 30 ноября. Напиши мне в телеграм — расскажу детали и как оплатить.', h:'Записаться в набор'},
     closed: {s:'Набор закрыт', c:'Узнать о следующем наборе',
-             d:'Второй набор закрыт. Напиши мне, чтобы узнать о следующем.', h:'Набор в клуб'}
+             d:'Третий набор закрыт. Напиши мне, чтобы узнать о следующем.', h:'Набор в клуб'}
   }[st];
   var el;
   if ((el = document.getElementById('e-status'))) { el.textContent = T.s; el.className = 'tier-status is-' + st; }
